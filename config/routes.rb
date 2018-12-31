@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/perfil', to: 'general#perfil'
   get '/mapa', to: 'general#mapa'
   get '/calendario', to: 'general#calendario'
+  get '/eventos', to: 'general#eventos'
 
   #perfiles
   get '/normal/perfil', to: 'normal#perfil'

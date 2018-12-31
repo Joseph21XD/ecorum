@@ -1,1 +1,95 @@
-<h1>Mapa</h1>
+
+	<div class="main-agile">
+		<!-- banner -->
+		<div class="agile-top" style="padding-top: 0; margin-top: 0; background-image: url('assets/menu.jpg'); ">
+			<div class="col-xs-4 logo">
+				<h1>
+					<a href="index.html">
+						<span>Eco</span>rum
+						<span><img style="width: 20%; height: 20%;" src="assets/logo.png"></span></a>
+				</h1>
+			</div>
+			<div class="col-xs-2 menu">
+				<a href="" id="menuToggle">
+					<span class="navClosed"></span>
+				</a>
+				<nav>
+					<a href="/main">Eventos</a>
+					<a href="/perfil">Perfil</a>
+					<a href="/calendario" class="scroll">Calendario</a>
+					<a href="/mapa" class="scroll">Mapa</a>
+							<h1 "myh1"> Aloha</h1>
+					<% case @tipo.nombre %>
+					<% when "institucion" %>
+						<a href="/institucion/comprobacion">Agregar Comprobación</a>
+					<% when "organizacion" %>
+						<a href="/organizacion/evento">Agregar Evento</a>
+					<% when "administrador" %>
+						<a href="/organizacion/evento">Agregar Evento</a>
+						<a href="/administrador/usuario">Agregar Usuario</a>
+						<a href="/administrador/usuarios">ver Usuarios</a>
+						<a href="/administrador/comprobacion">Ver Comprobaciones</a>
+					<% end %>
+
+				</nav>
+			</div>
+			 
+		</div>
+	</div>
+
+					<!--Banner de bienvenida-->
+	<div" class="banner-bottom-w3l" id="about">
+		<div style="margin: auto;  width: 90%; height: 600px; background-color: #000;" id="map"></div>
+	</div>		
+
+
+	
+
+
+
+
+		
+
+<!-- jquery -->
+	<script src="assets/jquery-2.1.4.min.js"></script>
+	<!-- //jquery -->
+
+	<script src="assets/bootstrap.js"></script>
+	<!-- Necessary-JavaScript-File-For-Bootstrap -->
+
+	<script src="assets/filtro.js"></script>
+
+		<!--  light box js -->
+	<script src="assets/lightbox-plus-jquery.min.js"></script>
+	<!-- //light box js-->
+
+	<!-- navigation -->
+	<script>
+				$('#menuToggle').click(function (e) {
+					var $parent = $(this).parent('.menu');
+					$parent.toggleClass("open");
+					var navState = $parent.hasClass('open') ? "hide" : "show";
+					$(this).attr("title", navState + " navigation");
+					// Set the timeout to the animation length in the CSS.
+					setTimeout(function () {
+						console.log("timeout set");
+						$('#menuToggle > span').toggleClass("navClosed").toggleClass("navOpen");
+					}, 200);
+					e.preventDefault();
+				});
+	</script>
+	<!-- //navigation -->
+
+	<script>
+		$(document).ready(function(){
+  		$('.dropdown-submenu a.test').on("click", function(e){
+    	$(this).next('ul').toggle();
+    		e.stopPropagation();
+    		e.preventDefault();
+  		});
+		});
+	</script>    
+
+	<script src="assets/map.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzz7EeKHpMa9HmoJukP9B1pRJ6TS2QM1U&callback=initMap"
+    async defer></script>

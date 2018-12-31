@@ -72,9 +72,14 @@ class GeneralController < ApplicationController
 	end
 
 	def mapa
+		@tipo = TipoUsuario.find(session[:user_type])		
 	end
 
 	def calendario
+	end
+
+	def eventos
+		@eventos = Evento.all
 	end
 
 end
