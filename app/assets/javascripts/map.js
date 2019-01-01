@@ -18,7 +18,8 @@
        
 
         for (var i = datos.eventos.length - 1; i >= 0; i--) {
-            var position = {lat: 9.948440, lng: -84.143611};
+
+            var position = {lat: parseFloat(datos.eventos[i].latitud) , lng: parseFloat(datos.eventos[i].longuitud) };
       
             var contentString = '<div id="content">'+
             '<div id="siteNotice">'+
@@ -35,7 +36,7 @@
           content: contentString
         });
 
-        var marker = new google.maps.Marker({position: position, map: map, title:"Hello World!", icon: '/assets/marker.png'});
+        var marker = new google.maps.Marker({position: position, map: map, title: datos.eventos[i].nombre, icon: '/assets/marker.png'});
 
         marker.addListener('click', function() {
           infowindow.open(map, marker);

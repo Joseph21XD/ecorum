@@ -61,3 +61,50 @@
 
 			return datos;
 		}
+
+		function favorito(id){
+			var x = document.getElementById("star-"+id);
+			var y = document.getElementById("fav-"+id);
+			var tipo="";
+			if(x.className == "far fa-star"){
+				x.className= "fas fa-star";
+				tipo= "add";
+			}
+			else{
+				x.className= "far fa-star";
+				tipo= "remove";
+			}
+			var parameters = {'id': id, 'tipo': tipo};
+			$.ajax({
+  				url: 'favorito.json',
+  				dataType: 'json',
+  				async: false,
+  				data: parameters,
+  				success: function(data) {
+  					y.innerHTML= data.result
+  				}
+			});
+
+		}
+
+		function comentar(id){
+			var x = document.getElementById("Message");
+			var comments = document.getElementById("listacomentarios");
+			var parameters = {'id': id, 'comentario': x.value};
+			var datos;
+			$.ajax({
+  				url: 'comentario.json',
+  				dataType: 'json',
+  				async: false,
+  				data: parameters,
+  				success: function(data) {
+  					datos = data;
+  				}
+			});
+			var count = $("#listacomentarios").children().length;
+			for (var i = count; i<datos.comentarios.length; i++) {
+				comments.innerHTML+="<div class=\"what-top1\"><div class=\"what-left\"><img style=\"width: 75px; border-radius: 50%;\" src=\"assets/logo.png\"></div><div class=\"what-right\"><h4>"+datos.comentarios[i].usuario+"</h4><p>"+datos.comentarios[i].detalle+"</p></div><div class=\"clearfix\"></div></div>";
+			}
+
+
+		}
