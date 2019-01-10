@@ -115,6 +115,15 @@ class GeneralController < ApplicationController
 		@comentarios = Comentario.where(evento_id: params[:id]).includes(:usuario)
 	end
 
+	def borrarusuario
+		Usuario.find(params[:id]).destroy
+	end
+
+	def buscarusuario
+		@search = params[:texto]+"%"
+		@users = Usuario.where(["nombre LIKE ? AND id != ?", @search, session[:user_id]]).or(Usuario.where("correo LIKE ? AND id != ?", @search, session[:user_id]))
+	end
+
 
 end
 

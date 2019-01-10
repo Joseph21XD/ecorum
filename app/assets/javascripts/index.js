@@ -105,6 +105,44 @@
 			for (var i = count; i<datos.comentarios.length; i++) {
 				comments.innerHTML+="<div class=\"what-top1\"><div class=\"what-left\"><img style=\"width: 75px; border-radius: 50%;\" src=\"assets/logo.png\"></div><div class=\"what-right\"><h4>"+datos.comentarios[i].usuario+"</h4><p>"+datos.comentarios[i].detalle+"</p></div><div class=\"clearfix\"></div></div>";
 			}
+		}
 
+		function borrarUsuario(id){
+			var nodo= document.getElementById("user-"+id).parentNode.parentNode;
+			var lista= document.getElementById("listausuarios");
+			lista.removeChild(nodo);
+			var parameters = { "id": id};
+			$.ajax({
+  				url: '/borrarusuario.json',
+  				dataType: 'json',
+  				async: true,
+  				data: parameters,
+  				success: function(data) {
+  				}
+			});
+		}
 
+		function buscar(){
+			var texto = document.getElementById("buscador").value;
+			var parameters = { "texto": texto};
+			var datos;
+			$.ajax({
+  				url: '/buscarusuario.json',
+  				dataType: 'json',
+  				async: false,
+  				data: parameters,
+  				success: function(data) {
+  					datos = data;
+  				}
+			});
+			var node= document.getElementById("listausuarios");
+			while (node.hasChildNodes()) {
+    			node.removeChild(node.lastChild);
+			}
+			for (var i = 0; i< datos.usuarios.length; i++) {
+				node.innerHTML+="<div class='what-top1'><div style='width: 10%;' class='what-left'><img style='width: 75px; border-radius: 50%;' src='/assets/logo.png'>"+
+		"</div><div style='width: 40%;' class='what-right'><a id='user-"+datos.usuarios[i].id+"' onclick='borrarUsuario("+datos.usuarios[i].id+")'>"+
+		"<i style='background-color: #ff4f81' class='fas fa-trash-alt' aria-hidden='true'></i></a></div><div style='width: 50%;' class='what-right'>"+
+		"<h4>"+datos.usuarios[i].nombre+"</h4><p>"+datos.usuarios[i].correo+"</p></div><div class='clearfix'></div></div>";
+			}	
 		}

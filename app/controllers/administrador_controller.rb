@@ -6,7 +6,7 @@ class AdministradorController < ApplicationController
 	end
 	def usuarios
 		@tipo = TipoUsuario.find(session[:user_type])
-		@usuarios = Usuario.all.order("nombre ASC")
+		@usuarios = Usuario.where.not(id: session[:user_id]).order("nombre ASC")
 	end
 	def comprobacion
 	end

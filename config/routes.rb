@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get '/evento', to: 'general#evento'
   get '/favorito', to: 'general#favorito'
   get '/comentario', to: 'general#comentario'
+  get '/borrarusuario', to: 'general#borrarusuario'
+  get '/buscarusuario', to: 'general#buscarusuario'
 
   #perfiles
   get '/normal/perfil', to: 'normal#perfil'

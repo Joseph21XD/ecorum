@@ -49,9 +49,9 @@
 				</div>
 				<form class="form-inline">
   					<div class="form-group mx-sm-3 mb-2">
-    					<input type="password" class="form-control" id="buscador" placeholder="Nombre o Correo">
+    					<input type="text" class="form-control" id="buscador" placeholder="Nombre o Correo">
   					</div>
-  					<button type="submit" class="btn btn-primary mb-2" onclick="buscar()" style="background:#56d25b;">Buscar</button>
+  					<button type="button" class="btn btn-primary mb-2" onclick="buscar()" style="background:#56d25b;">Buscar</button>
 				</form>
 			</div>
 			<div class="what-grids">
@@ -64,7 +64,7 @@
 							<img style="width: 75px; border-radius: 50%;" src="/assets/logo.png">
 						</div>
 						<div style="width: 40%;" class="what-right">
-							<a onclick="borrar(<%= usuario.id%>)"><i style="background-color: #ff4f81" class="fas fa-trash-alt" aria-hidden="true"></i></a>
+							<a id="user-<%= usuario.id%>" onclick="borrarUsuario(<%= usuario.id%>)"><i style="background-color: #ff4f81" class="fas fa-trash-alt" aria-hidden="true"></i></a>
 						</div>
 						<div style="width: 50%;" class="what-right">
 							<h4><%= usuario.nombre %></h4>
