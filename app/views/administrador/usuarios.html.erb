@@ -81,7 +81,7 @@
 
 
 		<!--Esta parte es obligatoria tenerla-->
-	<% if @tipo.nombre == "administrador" %>
+		<% if @tipo.nombre == "administrador" %>
 	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
@@ -98,7 +98,7 @@
 						<p>
 							únete a nuestra comunidad
 						</p>
-						<form action="/main" onsubmit="return registrar()">
+						<form>
 							<div class="styled-input agile-styled-input-top">
 								<input type="text" placeholder="Nombre" name="name" id="namereg" required="">
 							</div>
@@ -112,15 +112,15 @@
 								<input type="password" placeholder="Confirmar Contraseña" name="password2" id="password2" required="">
 							</div>
 							<div class="radio">
-      							<label><input type="radio" name="optradio" value="administrador" checked>Administrador</label>
+      							<label><input type="radio" class="messageCheckbox" name="optradio" value="administrador" checked>Administrador</label>
     						</div>
     						<div class="radio">
-      							<label><input type="radio" name="optradio" value="institucion">Institución</label>
+      							<label><input type="radio" class="messageCheckbox" name="optradio" value="institucion">Institución</label>
     						</div>
     						<div class="radio">
-      							<label><input type="radio" name="optradio" value="organizacion">Organización</label>
+      							<label><input type="radio" class="messageCheckbox" name="optradio" value="organizacion">Organización</label>
     						</div>
-							<input type="submit" value="Registrar">
+							<input type="button" onclick="registrar()" value="Registrar">
 							<p style="color: #f00;" id="mypreg"></p>
 						</form>
 						<p>

@@ -41,7 +41,8 @@
 			var name = document.getElementById("namereg").value;
 			var email = document.getElementById("emailreg").value;
 			var pass = document.getElementById("password1").value;
-			var parameters = { 'name': name, 'pass': pass, 'email': email};
+			var usrtype = $('.messageCheckbox:checked').val();
+			var parameters = { 'name': name, 'pass': pass, 'email': email, 'usertype': usrtype};
 			var datos;
      		$.ajax({
   				url: 'register.json',
