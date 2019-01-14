@@ -22,17 +22,31 @@ Rails.application.routes.draw do
   get '/institucion/perfil', to: 'institucion#perfil'
   get '/organizacion/perfil', to: 'organizacion#perfil'
 
+  #normal
+  get '/normal/updnombre', to: 'normal#updnombre'
+  get '/normal/updpassword', to: 'normal#updpassword' 
+  get '/normal/delete', to: 'normal#delete' 
+
   #institucion
   get '/institucion/comprobacion', to: 'institucion#comprobacion'
+  get '/institucion/updnombre', to: 'institucion#updnombre'
+  get '/institucion/updpassword', to: 'institucion#updpassword' 
+  get '/institucion/delete', to: 'institucion#delete' 
 
   #organizacion
   get '/organizacion/evento', to: 'organizacion#evento'
   post '/organizacion/evento', to: 'organizacion#eventoPost'
+  get '/organizacion/updnombre', to: 'organizacion#updnombre'
+  get '/organizacion/updpassword', to: 'organizacion#updpassword' 
+  get '/organizacion/delete', to: 'organizacion#delete' 
 
   #administrador
   get '/administrador/usuario', to: 'administrador#usuario'
   get '/administrador/usuarios', to: 'administrador#usuarios'
   get '/administrador/comprobacion', to: 'administrador#comprobacion'
+  get '/administrador/updnombre', to: 'administrador#updnombre'
+  get '/administrador/updpassword', to: 'administrador#updpassword' 
+  get '/administrador/delete', to: 'administrador#delete'     
 
   get '/normal', to: 'normal#index'
   get '/normal/new', to: 'normal#new'

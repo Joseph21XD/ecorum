@@ -1,4 +1,3 @@
-
 /*--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -35,9 +34,9 @@ input[type="button"],input[type="submit"]{
 	-ms-transition:0.5s all;
 }
 h1,h2,h3,h4,h5,h6{
-	margin:0;
+	margin:0;	
 	font-family: 'Rasa', serif;
-}
+}	
 p{
 	margin:0;
 	font-family: 'Open Sans', sans-serif;
@@ -53,6 +52,34 @@ ul{
 label{
 	margin:0;
 }
+.divPrincipal{
+    
+    width: 350px;
+    height: auto;
+    min-height: 500px;
+    left: 0;
+    right: 0;
+    margin: auto; 
+    border-radius: 20px; 
+    background-color: white;
+    z-index: 1;
+    position: absolute;
+}
+
+.divPrincipal .bodyHeader
+{
+    height: 80px;
+    background-color: steelblue;
+}
+
+.divPrincipal .bodyContent
+{
+    height: auto;
+    padding: 50px;
+    min-height: 500px;
+
+}
+
 /*-- banner --*/
 .main-agile {
     position: relative;
@@ -325,7 +352,7 @@ nav a:hover:after {
 }
 /*-- //menu-navigation --*/
 
-/*-- banner-text --*/
+/*-- banner-text --*/ 
 .header-w3layouts{
     position: absolute;
     top: 0;
@@ -656,7 +683,7 @@ h6.w3l-style {
 }
 /*-- stats --*/
 .stats-info-agile {
-
+    
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -896,7 +923,7 @@ a.w3-buttons {
 }
 .team-info{
     position: relative;
-    overflow: hidden;
+    overflow: hidden;	
 }
 .team-info img{
 	width:100%;
@@ -1119,7 +1146,7 @@ h5.small-title {
 }
 .address-row p a:hover{
     color: #56d25b;
-}
+} 
 .address-right {
     padding: 0 .5em;
 }
@@ -1412,7 +1439,7 @@ h5.small-title {
 	bottom: 24px;
 	right: 1%;
 	overflow: hidden;
-	z-index: 999;
+	z-index: 999; 
     width: 64px;
     height: 64px;
 	border: none;
@@ -1465,7 +1492,7 @@ h5.small-title {
     }
     .video-w3l h5 {
         width: 80%;
-    }
+    }    
     .contact_grids_info {
         width: 46%;
     }
@@ -1771,7 +1798,7 @@ h5.small-title {
     }
     .video-w3l h5 {
         font-size: 35px;
-    }
+    }    
     .video-w3l {
         min-height: 340px;
     }
@@ -1813,7 +1840,7 @@ h5.small-title {
     }
     .w3ls-social-icons-2 h3 {
         font-size: 30px;
-    }
+    }    
     .agileinfo-newsletter {
         padding-left: 1.5em;
     }
@@ -2159,7 +2186,7 @@ h5.small-title {
     }
     .contact-right span, .contact-right a {
         font-size: 14px;
-    }
+    }    
     .w3ls-social-icons-2 {
         width: 90%;
     }
@@ -2209,7 +2236,7 @@ h5.small-title {
     }
     .video-w3l h5 {
         font-size: 25px;
-    }
+    }    
     .what-grid1 p, .what-grid p {
         padding-top: 3px;
     }
@@ -2251,7 +2278,7 @@ h5.small-title {
     }
     .contact-right p {
         font-size: 16px;
-    }
+    }    
     .contact-right span, .contact-right a {
         font-size: 12px;
     }
@@ -2578,7 +2605,7 @@ h5.small-title {
     float: right;
     margin-right: 10px;
 }
-
+    
 .dropdown-submenu {
   position: relative;
 }
@@ -2590,11 +2617,11 @@ h5.small-title {
 }
 
 .dropdown-toggle{
-    background-color: #56d25b;
+    background-color: #56d25b; 
     color: #fff;
 }
 
-.btn-primary.active,
+.btn-primary.active, 
 .btn-primary:active, .dropdown-toggle, .dropdown-toggle:link, .dropdown-toggle:active, .dropdown-toggle:visited, .dropdown-toggle:focus{
     background-color: #56d25b;
     border-color:  #fff;
@@ -2608,109 +2635,111 @@ h5.small-title {
 }
 /*--//responsive--*/
 
-	* {box-sizing: border-box;}
-	ul {list-style-type: none;}
-	body {font-family:'Open Sans', sans-serif;}
-	h1 {font-family:  'Rasa', serif; color: #56D25B;}
-	.month {
-	  padding: 70px 25px;
-	  width: 100%;
-	  background: #56D25B;
-	  text-align: center;
-	}
+/*--//responsive--*/
+
+    * {box-sizing: border-box;}
+    ul {list-style-type: none;}
+    body {font-family:'Open Sans', sans-serif;}
+    h1 {font-family:  'Rasa', serif; color: #56D25B;}
+    .month {
+      padding: 70px 25px;
+      width: 100%;
+      background: #56D25B;
+      text-align: center;
+    }
 
 
 
-	.month ul {
-	  margin: 0;
-	  padding: 0;
-	}
+    .month ul {
+      margin: 0;
+      padding: 0;
+    }
 
-	.month ul li {
-	  color: white;
-	  font-size: 20px;
-	  text-transform: uppercase;
-	  letter-spacing: 3px;
-	}
+    .month ul li {
+      color: white;
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
 
-	.month .prev {
-	  float: left;
-	  padding-top: 10px;
-		cursor: pointer;
-	}
+    .month .prev {
+      float: left;
+      padding-top: 10px;
+        cursor: pointer;
+    }
 
-	.month .next {
-	  float: right;
-	  padding-top: 10px;
-		cursor: pointer;
-	}
+    .month .next {
+      float: right;
+      padding-top: 10px;
+        cursor: pointer;
+    }
 
-	.handCurso {
-		cursor: pointer;
-	}
+    .handCurso {
+        cursor: pointer;
+    }
 
-	.weekdays {
-	  margin: 0;
-	  padding: 10px 0;
-	  background-color: #ddd;
-	}
+    .weekdays {
+      margin: 0;
+      padding: 10px 0;
+      background-color: #ddd;
+    }
 
-	.weekdays li {
-	  display: inline-block;
-	  width: 13.6%;
-	  color: #666;
-	  text-align: center;
-	}
+    .weekdays li {
+      display: inline-block;
+      width: 13.6%;
+      color: #666;
+      text-align: center;
+    }
 
-	.days {
-	  padding: 10px 0;
-	  background: #eee;
-	  margin: 0;
-	}
+    .days {
+      padding: 10px 0;
+      background: #eee;
+      margin: 0;
+    }
 
-	.days li {
-	  list-style-type: none;
-	  display: inline-block;
-	  width: 13.6%;
-	  text-align: center;
-	  margin-bottom: 5px;
-	  font-size:12px;
-	  color: #777;
-	}
+    .days li {
+      list-style-type: none;
+      display: inline-block;
+      width: 13.6%;
+      text-align: center;
+      margin-bottom: 5px;
+      font-size:12px;
+      color: #777;
+    }
 
-	.days li .active {
-	  padding: 5px;
-	  background: #56D25B;
-	  color: white !important
-	}
+    .days li .active {
+      padding: 5px;
+      background: #56D25B;
+      color: white !important
+    }
 
-	.days li .today {
-	  padding: 5px;
-	  background: #828c82;
-	  color: white !important
-	}
+    .days li .today {
+      padding: 5px;
+      background: #828c82;
+      color: white !important
+    }
 
-	.days li .event {
-	  padding: 5px;
-	  background: #23e016;
-	  color: white !important
-	}
+    .days li .event {
+      padding: 5px;
+      background: #23e016;
+      color: white !important
+    }
 
-	/* Add media queries for smaller screens */
-	@media screen and (max-width:720px) {
-	  .weekdays li, .days li {width: 13.1%;}
-	}
+    /* Add media queries for smaller screens */
+    @media screen and (max-width:720px) {
+      .weekdays li, .days li {width: 13.1%;}
+    }
 
-	@media screen and (max-width: 420px) {
-	  .weekdays li, .days li {width: 12.5%;}
-	  .days li .active {padding: 2px;}
-	}
+    @media screen and (max-width: 420px) {
+      .weekdays li, .days li {width: 12.5%;}
+      .days li .active {padding: 2px;}
+    }
 
-	@media screen and (max-width: 290px) {
-	  .weekdays li, .days li {width: 12.2%;}
-	}
+    @media screen and (max-width: 290px) {
+      .weekdays li, .days li {width: 12.2%;}
+    }
 
-	input[type=text], select {
+    input[type=text], select {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
