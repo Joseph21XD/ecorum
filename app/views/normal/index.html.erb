@@ -1,0 +1,8 @@
+<div class="page-header"><h1>Upload Photo</h1></div>
+
+<div class="media">
+  <% @eventos.each do |evento| %>
+      <img style="width: 100px; height: 100px;" src="<%= evento.image.url%>">
+      <h4><%= evento.nombre %></h4>
+  <% end %>
+</div>

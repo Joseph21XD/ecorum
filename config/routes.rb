@@ -33,5 +33,8 @@ Rails.application.routes.draw do
   get '/administrador/usuarios', to: 'administrador#usuarios'
   get '/administrador/comprobacion', to: 'administrador#comprobacion'
 
+  get '/normal', to: 'normal#index'
+  get '/normal/new', to: 'normal#new'
+  post '/normal', to: 'normal#create'
 
 end
