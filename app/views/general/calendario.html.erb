@@ -1,0 +1,129 @@
+
+	<div class="main-agile">
+		<!-- banner -->
+		<div class="agile-top" style="padding-top: 0; margin-top: 0; background-image: url('assets/menu.jpg'); ">
+			<div class="col-xs-4 logo">
+				<h1>
+					<a href="index.html">
+						<span>Eco</span>rum
+						<span><img style="width: 20%; height: 20%;" src="assets/logo.png"></span></a>
+				</h1>
+			</div>
+			<div class="col-xs-2 menu">
+				<a href="" id="menuToggle">
+					<span class="navClosed"></span>
+				</a>
+				<nav>
+					<a href="/main">Eventos</a>
+					<a href="/perfil">Perfil</a>
+					<a href="/calendario" class="scroll">Calendario</a>
+					<a href="/mapa" class="scroll">Mapa</a>
+					<% case @tipo.nombre %>
+					<% when "institucion" %>
+						<a href="/institucion/comprobacion">Agregar Comprobación</a>
+					<% when "organizacion" %>
+						<a href="/organizacion/evento">Agregar Evento</a>
+					<% when "administrador" %>
+						<a href="/organizacion/evento">Agregar Evento</a>
+						<a href="#" data-toggle="modal" data-target="#myModal1">Agregar Usuario</a>
+						<a href="/administrador/usuarios">ver Usuarios</a>
+						<a href="/administrador/comprobacion">Ver Comprobaciones</a>
+					<% end %>
+					<a href="/">Cerrar Sesión</a>
+				</nav>
+			</div>
+
+		</div>
+	</div>
+
+
+
+
+					<!--Banner de bienvenida-->
+          <br><br><br>
+
+          	<div class="month">
+
+          	  <ul>
+          		<li class="prev" onclick="mesAnterior()">&#10094;</li>
+          		<li class="next" onclick="mesSiguiente()">&#10095;</li>
+          		<li id="mes_actual"></li>
+              	<li style="font-size:18px" id="anno_actual"></li>
+          	  </ul>
+          	</div>
+
+            <ul class="weekdays">
+          	  <li>Lu</li>
+          	  <li>Ma</li>
+          	  <li>Mi</li>
+          	  <li>Ju</li>
+          	  <li>Vi</li>
+          	  <li>Sa</li>
+          	  <li>Do</li>
+          	</ul>
+
+          	<ul id="daysList" class="days">
+          	  <!--<li><span class="today">11</span></li>-->
+          	</ul>
+          <br>
+          	<h1 id="tituloCalendar">Eventos - --/--/----<h1>
+							<br>
+					<ul id="listEventos">
+
+	        </ul>
+
+	<!--Esta parte es obligatoria tenerla-->
+	<% if @tipo.nombre == "administrador" %>
+	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
+	<% end %>
+	<!---->
+
+
+
+
+
+
+
+
+
+<!-- jquery -->
+	<script src="assets/jquery-2.1.4.min.js"></script>
+	<!-- //jquery -->
+
+	<script src="assets/bootstrap.js"></script>
+	<!-- Necessary-JavaScript-File-For-Bootstrap -->
+
+	<script src="assets/filtro.js"></script>
+
+		<!--  light box js -->
+	<script src="assets/lightbox-plus-jquery.min.js"></script>
+	<!-- //light box js-->
+
+	<!-- navigation -->
+	<script>
+				$('#menuToggle').click(function (e) {
+					var $parent = $(this).parent('.menu');
+					$parent.toggleClass("open");
+					var navState = $parent.hasClass('open') ? "hide" : "show";
+					$(this).attr("title", navState + " navigation");
+					// Set the timeout to the animation length in the CSS.
+					setTimeout(function () {
+						console.log("timeout set");
+						$('#menuToggle > span').toggleClass("navClosed").toggleClass("navOpen");
+					}, 200);
+					e.preventDefault();
+				});
+	</script>
+	<!-- //navigation -->
+
+	<script>
+		$(document).ready(function(){
+  		$('.dropdown-submenu a.test').on("click", function(e){
+    	$(this).next('ul').toggle();
+    		e.stopPropagation();
+    		e.preventDefault();
+  		});
+		});
+	</script>
+
+  <script src="assets/calendario.js"></script>

@@ -1,0 +1,254 @@
+
+	<div class="main-agile">
+		<!-- banner -->
+		<div class="agile-top" style="padding-top: 0; margin-top: 0; background-image: url('assets/menu.jpg'); ">
+			<div class="col-xs-4 logo">
+				<h1>
+					<a href="index.html">
+						<span>Eco</span>rum
+						<span><img style="width: 20%; height: 20%;" src="assets/logo.png"></span></a>
+				</h1>
+			</div>
+
+			<div style="position: fixed; right: 20%; top: 12px; background-color: #000">
+			<div class="dropdown">
+    			<button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Filtro
+    			<span class="caret"></span></button>
+    			<ul class="dropdown-menu">
+
+      				<li><a tabindex="-1" href="/filtro?id=0&tipo=fecha">Fecha más cercana</a></li>
+      				<li><a tabindex="-1" href="/filtro?id=0&tipo=puntaje">Mayor puntaje</a></li>
+      				<li class="dropdown-submenu">
+        				<a class="test" tabindex="-1" href="#">Categorias<span class="caret"></span></a>
+        				<ul class="dropdown-menu">
+        					<% @categorias.each do |categoria| %>
+          					<li><a tabindex="-1" href="/filtro?id=<%= categoria.id %>&tipo=categoria"><%= categoria.nombre %></a></li>
+          					<% end %>
+        				</ul>
+      				</li>
+      				<li class="dropdown-submenu">
+        				<a class="test" tabindex="-1" href="">Provincias<span class="caret"></span></a>
+        				<ul class="dropdown-menu">
+          					<% @provincias.each do |provincia| %>
+          					<li><a tabindex="-1" href="/filtro?id=<%= provincia.id %>&tipo=provincia"><%= provincia.nombre %></a></li>
+          					<% end %>
+        				</ul>
+      				</li>
+      				<li><a tabindex="-1" href="/filtro?id=0&tipo=ninguno">Ninguno</a></li>
+    			</ul>
+  			</div>
+  			</div>
+			<div class="col-xs-2 menu">
+				<a href="" id="menuToggle">
+					<span class="navClosed"></span>
+				</a>
+				<nav>
+
+					<a href="/main">Eventos</a>
+					<a href="/perfil">Perfil</a>
+					<a href="/calendario" class="scroll">Calendario</a>
+					<a href="/mapa" class="scroll">Mapa</a>
+					<% case @tipo.nombre %>
+					<% when "institucion" %>
+						<a href="/institucion/comprobacion">Agregar Comprobación</a>
+					<% when "organizacion" %>
+						<a href="/organizacion/evento">Agregar Evento</a>
+					<% when "administrador" %>
+						<a href="/organizacion/evento">Agregar Evento</a>
+						<a href="#" data-toggle="modal" data-target="#myModal1">Agregar Usuario</a>
+						<a href="/administrador/usuarios">ver Usuarios</a>
+						<a href="/administrador/comprobacion">Ver Comprobaciones</a>
+					<% end %>
+					<a href="/">Cerrar Sesión</a>
+
+				</nav>
+			</div>
+			 
+		</div>
+	</div>
+
+					<!--Banner de bienvenida-->
+	<div class="banner-bottom-w3l" id="about">
+		<ul>
+			<% @eventos.each.with_index do |evento, index| %>
+			<li>
+			<br><br>
+				<% if index%2 == 0 %>
+				<div class="container  stats-info-agile">
+			<div class="welcome-sub-wthree border-0">
+				<div class="col-md-5 banner_bottom_left">
+					<h4><span><%= evento.nombre %></span></h4>
+					<div class="spandiv" ><h4 class="spandiv-left"><span class="infotitle">Fecha: </span></h4><p class="spandiv-right"><%= evento.fechaHora.strftime("%d-%m-%Y    %H:%M") %></p></div>
+					<div class="spandiv"><h4 class="spandiv-left"><span class="infotitle">Ubicación: </span></h4><p class="spandiv-right"><%= evento.ubicacion%></p></div>
+					<div class="spandiv"><h4 class="spandiv-left"><span class="infotitle">Organización: </span></h4><p class="spandiv-right"><%= evento.usuario.nombre %></p></div>
+					<div class="spandiv"><h4 class="spandiv-left"><span class="infotitle">Descripción: </span></h4><p class="spandiv-right"><%= evento.descripcion %></p></div>
+			</div>
+				<!-- Stats-->
+			<div class="col-md-7 stats-info-agile" style="background: url('assets/a3.jpg') ">
+					<div class="w3l-right-stats">
+						<div class="stats-grid stat-border">
+							<div class='numscroller numscroller-big-bottom'><%= evento.puntaje %></div>
+							<p>Puntaje</p>
+						</div>
+						<div class="stats-grid">
+							<div class='numscroller numscroller-big-bottom' id="fav-<%= evento.id %>"><%= evento.favoritos.length%></div>
+							<p>Interesados</p>
+						</div>
+						<div class="stats-grid">
+							<% if @favs.include?(evento.id) %>
+							<div class="spandiv"><a class="spandiv-left" href="/evento?id=<%= evento.id %>"><div class="col-xs-2 wthree-ser-blank"><i class="fas fa-eye" aria-hidden="true"></i></div></a><a class="spandiv-right" onclick="favorito(<%= evento.id %>)"><div class="col-xs-2 wthree-ser-blank"><i class="fas fa-star" id="star-<%= evento.id %>" aria-hidden="true"></i></div></a></div>
+							<% else %>
+							<div class="spandiv"><a class="spandiv-left" href="/evento?id=<%= evento.id %>"><div class="col-xs-2 wthree-ser-blank"><i class="fas fa-eye" aria-hidden="true"></i></div></a><a class="spandiv-right" onclick="favorito(<%= evento.id %>)"><div class="col-xs-2 wthree-ser-blank"><i class="far fa-star" id="star-<%= evento.id %>" aria-hidden="true"></i></div></a></div>
+							<% end %>
+						</div>
+					</div>
+			</div>
+				<!-- //Stats -->
+			<div class="clearfix"></div>
+			</div>
+				</div>
+				<% else %>
+				<div class="container  stats-info-agile">
+			<div class="welcome-sub-wthree border-0">
+								<!-- Stats-->
+			<div class="col-md-7 stats-info-agile" style="background: url('assets/a3.jpg') ">
+					<div class="w3l-left-stats">
+						<div class="stats-grid stat-border">
+							<div class='numscroller numscroller-big-bottom'><%= evento.puntaje %></div>
+							<p>Puntaje</p>
+						</div>
+						<div class="stats-grid">
+							<div class='numscroller numscroller-big-bottom' id="fav-<%= evento.id %>"><%= evento.favoritos.length%></div>
+							<p>Interesados</p>
+						</div>
+						<div class="stats-grid">
+							<% if @favs.include?(evento.id) %>
+							<div class="spandiv"><a class="spandiv-left" href="/evento?id=<%= evento.id %>"><div class="col-xs-2 wthree-ser-blank"><i class="fas fa-eye" aria-hidden="true"></i></div></a><a class="spandiv-right" onclick="favorito(<%= evento.id %>)"><div class="col-xs-2 wthree-ser-blank"><i class="fas fa-star" id="star-<%= evento.id %>" aria-hidden="true"></i></div></a></div>
+							<% else %>
+							<div class="spandiv"><a class="spandiv-left" href="/evento?id=<%= evento.id %>"><div class="col-xs-2 wthree-ser-blank"><i class="fas fa-eye" aria-hidden="true"></i></div></a><a class="spandiv-right" onclick="favorito(<%= evento.id %>)"><div class="col-xs-2 wthree-ser-blank"><i class="far fa-star" id="star-<%= evento.id %>" aria-hidden="true"></i></div></a></div>
+							<% end %>
+						</div>
+					</div>
+			</div>
+				<!-- //Stats -->
+				<div class="col-md-5 banner_bottom_left">
+					<h4><span><%= evento.nombre %></span></h4>
+					<div class="spandiv" ><h4 class="spandiv-left"><span class="infotitle">Fecha: </span></h4><p class="spandiv-right"><%= evento.fechaHora.strftime("%d-%m-%Y    %H:%M") %></p></div>
+					<div class="spandiv"><h4 class="spandiv-left"><span class="infotitle">Ubicación: </span></h4><p class="spandiv-right"><%= evento.ubicacion%></p></div>
+					<div class="spandiv"><h4 class="spandiv-left"><span class="infotitle">Organización: </span></h4><p class="spandiv-right"><%= evento.usuario.nombre %></p></div>
+					<div class="spandiv"><h4 class="spandiv-left"><span class="infotitle">Descripción: </span></h4><p class="spandiv-right"><%= evento.descripcion %></p></div>
+			</div>
+
+			<div class="clearfix"></div>
+			</div>
+				</div>
+				<% end %>				
+			</li>
+			<% end %>
+		</ul>
+	</div>		
+
+
+		<!--Esta parte es obligatoria tenerla-->
+	<% if @tipo.nombre == "administrador" %>
+	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body modal-body-sub_agile">
+					<div class="main-mailposi">
+						<span class="fa fa-envelope-o" aria-hidden="true"></span>
+					</div>
+					<div class="modal_body_left modal_body_left1">
+						<h3 class="agileinfo_sign">Registrate</h3>
+						<p>
+							únete a nuestra comunidad
+						</p>
+						<form action="/main" onsubmit="return registrar()">
+							<div class="styled-input agile-styled-input-top">
+								<input type="text" placeholder="Nombre" name="name" id="namereg" required="">
+							</div>
+							<div class="styled-input">
+								<input type="email" placeholder="Correo" name="email" id="emailreg" required="">
+							</div>
+							<div class="styled-input">
+								<input type="password" placeholder="Contraseña" name="password" id="password1" required="">
+							</div>
+							<div class="styled-input">
+								<input type="password" placeholder="Confirmar Contraseña" name="password2" id="password2" required="">
+							</div>
+							<div class="radio">
+      							<label><input type="radio" name="optradio" value="administrador" checked>Administrador</label>
+    						</div>
+    						<div class="radio">
+      							<label><input type="radio" name="optradio" value="institucion">Institución</label>
+    						</div>
+    						<div class="radio">
+      							<label><input type="radio" name="optradio" value="organizacion">Organización</label>
+    						</div>
+							<input type="submit" value="Registrar">
+							<p style="color: #f00;" id="mypreg"></p>
+						</form>
+						<p>
+							<a href="#">Acepto los términos y condiciones</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<!-- //Modal content-->
+		</div>
+	</div>
+	<% end %>
+	<!---->
+
+
+	
+
+
+
+
+		
+
+<!-- jquery -->
+	<script src="assets/jquery-2.1.4.min.js"></script>
+	<!-- //jquery -->
+
+	<script src="assets/bootstrap.js"></script>
+	<!-- Necessary-JavaScript-File-For-Bootstrap -->
+
+	<script src="assets/index.js"></script>
+
+		<!--  light box js -->
+	<script src="assets/lightbox-plus-jquery.min.js"></script>
+	<!-- //light box js-->
+
+	<!-- navigation -->
+	<script>
+				$('#menuToggle').click(function (e) {
+					var $parent = $(this).parent('.menu');
+					$parent.toggleClass("open");
+					var navState = $parent.hasClass('open') ? "hide" : "show";
+					$(this).attr("title", navState + " navigation");
+					// Set the timeout to the animation length in the CSS.
+					setTimeout(function () {
+						console.log("timeout set");
+						$('#menuToggle > span').toggleClass("navClosed").toggleClass("navOpen");
+					}, 200);
+					e.preventDefault();
+				});
+	</script>
+	<!-- //navigation -->
+
+	<script>
+		$(document).ready(function(){
+  		$('.dropdown-submenu a.test').on("click", function(e){
+    	$(this).next('ul').toggle();
+    		e.stopPropagation();
+    		e.preventDefault();
+  		});
+		});
+	</script>
+

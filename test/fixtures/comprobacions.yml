@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  usuario: one
+  evento: one
+  comentario: MyText
+  comentarioAdmin: MyText
+  puntaje: 1
+
+two:
+  usuario: two
+  evento: two
+  comentario: MyText
+  comentarioAdmin: MyText
+  puntaje: 1
