@@ -84,7 +84,7 @@
 					<div class="spandiv"><h4 class="spandiv-left"><span class="infotitle">Descripción: </span></h4><p class="spandiv-right"><%= evento.descripcion %></p></div>
 			</div>
 				<!-- Stats-->
-			<div class="col-md-7 stats-info-agile" style="background: url('assets/a3.jpg') ">
+			<div class="col-md-7 stats-info-agile" style="background: url('<%= evento.image.url%>') ">
 					<div class="w3l-right-stats">
 						<div class="stats-grid stat-border">
 							<div class='numscroller numscroller-big-bottom'><%= evento.puntaje %></div>
@@ -111,7 +111,7 @@
 				<div class="container  stats-info-agile">
 			<div class="welcome-sub-wthree border-0">
 								<!-- Stats-->
-			<div class="col-md-7 stats-info-agile" style="background: url('assets/a3.jpg') ">
+			<div class="col-md-7 stats-info-agile" style="background: url('<%= evento.image.url%>') ">
 					<div class="w3l-left-stats">
 						<div class="stats-grid stat-border">
 							<div class='numscroller numscroller-big-bottom'><%= evento.puntaje %></div>

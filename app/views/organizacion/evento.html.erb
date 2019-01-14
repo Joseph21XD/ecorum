@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
 	<div class="main-agile">
 		<!-- banner -->
@@ -43,7 +43,8 @@
   	<br>
 
   	<div class="diva">
-    <form action="evento" onsubmit="return nuevoEvento()">
+
+  	<%= form_for @evento, :url => '/organizacion/evento', html: { multipart: true } do |f| %>
       <label for="fname">Nombre</label>
       <input type="text" id="fname" name="fname" required/>
 
@@ -76,22 +77,25 @@
 
       </select>
 
-  	<label for="fimg">Imagen &nbsp </label>
 
-s
-      <input id="image-file" type="file" name="fimg" id="fimg" accept="image/*" required/>
+
+    <div class="form-group">
+  	<label for="fimg">Imagen &nbsp </label>
+    <%= f.file_field :image, class: 'form-control' %>
+  	</div>
+
   	<br><br>
   	<label for="fpunto">Punto en el mapa &nbsp </label>
     <div" class="banner-bottom-w3l" id="about">
       <div style="margin: auto;  width: 90%; height: 600px; background-color: #000;" id="mapaE"></div>
-    </div>
-  	<br>
+       	<br>
       <label for="lat">Latitud</label>
       <input type="text" id="lat" name="lat"required />
       <label for="lng">Longitud</label>
       <input type="text" id="lng" name="lng"required />
-      <input type="submit" value="Crear evento">
-    </form>
+      <%= f.submit 'Crear Evento' %>
+    </div>
+    <% end %>
   </div>
 
 
@@ -153,6 +157,4 @@ s
   <script src="/assets/newevento.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzz7EeKHpMa9HmoJukP9B1pRJ6TS2QM1U&callback=initMap"
   async defer></script>
-=======
-<h1>Crear Evento</h1>
->>>>>>> 32f4e96dd730ed2285857df15a5809bb039d9c5a
+

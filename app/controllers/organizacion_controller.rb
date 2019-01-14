@@ -6,6 +6,10 @@ class OrganizacionController < ApplicationController
 		@usuarios = Usuario.all
 		@categorias = TipoEvento.all
 		@provincias = Provincium.all
+		@evento = Evento.new
+	end
+
+	def eventoPost
 		nombre = params[:fname]
 		descrip = params[:fdesc]
 		tipo = params[:ftipo]
@@ -15,9 +19,10 @@ class OrganizacionController < ApplicationController
 		provincia = params[:fprov]
 		latitud = params[:lat]
 		longitud = params[:lng]
+		image = params[:evento][:image]
 		@evento = Evento.create(nombre: nombre, fechaHora: fecha, ubicacion: ubicacion, usuario_id: session[:user_id],
-			 descripcion: descrip, latitud: latitud,longuitud: longitud,imagen: "",puntaje: puntajes,tipo_evento_id: tipo, provincium_id: provincia)
+			 descripcion: descrip, latitud: latitud,longuitud: longitud,imagen: "",puntaje: puntajes,tipo_evento_id: tipo, provincium_id: provincia, image: image)
 
-		end
+	end
 
 end

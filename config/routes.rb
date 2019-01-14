@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   #organizacion
   get '/organizacion/evento', to: 'organizacion#evento'
+  post '/organizacion/evento', to: 'organizacion#eventoPost'
 
   #administrador
   get '/administrador/usuario', to: 'administrador#usuario'
