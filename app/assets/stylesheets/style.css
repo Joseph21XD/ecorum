@@ -2634,3 +2634,146 @@ h5.small-title {
     color: #fff;
 }
 /*--//responsive--*/
+
+/*--//responsive--*/
+
+    * {box-sizing: border-box;}
+    ul {list-style-type: none;}
+    body {font-family:'Open Sans', sans-serif;}
+    h1 {font-family:  'Rasa', serif; color: #56D25B;}
+    .month {
+      padding: 70px 25px;
+      width: 100%;
+      background: #56D25B;
+      text-align: center;
+    }
+
+
+
+    .month ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    .month ul li {
+      color: white;
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .month .prev {
+      float: left;
+      padding-top: 10px;
+        cursor: pointer;
+    }
+
+    .month .next {
+      float: right;
+      padding-top: 10px;
+        cursor: pointer;
+    }
+
+    .handCurso {
+        cursor: pointer;
+    }
+
+    .weekdays {
+      margin: 0;
+      padding: 10px 0;
+      background-color: #ddd;
+    }
+
+    .weekdays li {
+      display: inline-block;
+      width: 13.6%;
+      color: #666;
+      text-align: center;
+    }
+
+    .days {
+      padding: 10px 0;
+      background: #eee;
+      margin: 0;
+    }
+
+    .days li {
+      list-style-type: none;
+      display: inline-block;
+      width: 13.6%;
+      text-align: center;
+      margin-bottom: 5px;
+      font-size:12px;
+      color: #777;
+    }
+
+    .days li .active {
+      padding: 5px;
+      background: #56D25B;
+      color: white !important
+    }
+
+    .days li .today {
+      padding: 5px;
+      background: #828c82;
+      color: white !important
+    }
+
+    .days li .event {
+      padding: 5px;
+      background: #23e016;
+      color: white !important
+    }
+
+    /* Add media queries for smaller screens */
+    @media screen and (max-width:720px) {
+      .weekdays li, .days li {width: 13.1%;}
+    }
+
+    @media screen and (max-width: 420px) {
+      .weekdays li, .days li {width: 12.5%;}
+      .days li .active {padding: 2px;}
+    }
+
+    @media screen and (max-width: 290px) {
+      .weekdays li, .days li {width: 12.2%;}
+    }
+
+    input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=datetime-local]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.diva {
+  border-radius: 5px;
+  padding: 20px;
+}
