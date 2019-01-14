@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   #general
   root to: 'general#index'
   get '/login', to: 'general#login'
@@ -9,6 +8,7 @@ Rails.application.routes.draw do
   get '/perfil', to: 'general#perfil'
   get '/mapa', to: 'general#mapa'
   get '/calendario', to: 'general#calendario'
+  get '/fecha_evento', to: 'general#fecha_evento'
   get '/eventos', to: 'general#eventos'
   get '/evento', to: 'general#evento'
   get '/favorito', to: 'general#favorito'

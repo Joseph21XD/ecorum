@@ -1,1 +1,158 @@
+<<<<<<< HEAD
+
+	<div class="main-agile">
+		<!-- banner -->
+		<div class="agile-top" style="padding-top: 0; margin-top: 0; background-image: url('/assets/menu.jpg'); ">
+			<div class="col-xs-4 logo">
+				<h1>
+					<a href="index.html">
+						<span>Eco</span>rum
+						<span><img style="width: 20%; height: 20%;" src="/assets/logo.png"></span></a>
+				</h1>
+			</div>
+			<div class="col-xs-2 menu">
+				<a href="" id="menuToggle">
+					<span class="navClosed"></span>
+				</a>
+				<nav>
+					<a href="/main">Eventos</a>
+					<a href="/perfil">Perfil</a>
+					<a href="/calendario" class="scroll">Calendario</a>
+					<a href="/mapa" class="scroll">Mapa</a>
+					<% case @tipo.nombre %>
+					<% when "institucion" %>
+						<a href="/institucion/comprobacion">Agregar Comprobación</a>
+					<% when "organizacion" %>
+						<a href="/organizacion/evento">Agregar Evento</a>
+					<% when "administrador" %>
+						<a href="/organizacion/evento">Agregar Evento</a>
+						<a href="#" data-toggle="modal" data-target="#myModal1">Agregar Usuario</a>
+						<a href="/administrador/usuarios">ver Usuarios</a>
+						<a href="/administrador/comprobacion">Ver Comprobaciones</a>
+					<% end %>
+					<a href="/">Cerrar Sesión</a>
+				</nav>
+			</div>
+
+		</div>
+	</div>
+
+					<!--Banner de bienvenida-->
+          <br><br><br><br>
+  	<h1 style="color:#56D25B;">&nbsp &nbsp Crear evento</h1>
+  	<br>
+
+  	<div class="diva">
+    <form action="evento" onsubmit="return nuevoEvento()">
+      <label for="fname">Nombre</label>
+      <input type="text" id="fname" name="fname" required/>
+
+      <label for="fdesc">Descripción</label>
+      <input type="text" id="fdesc" name="fdesc" required/>
+
+      <label for="fpunt">Puntaje</label>
+      <input type="text" id="fpunt" name="fpunt" required/>
+
+
+      <label for="ftipo">Tipo de evento</label>
+      <select id="ftipo" name="ftipo">
+        <% @categorias.each do |categoria| %>
+        <option value="<%= categoria.id %>"><%= categoria.nombre %></option>
+        <% end %>
+
+      </select>
+
+  	 <label for="ffecha">Fecha y hora</label>
+      <input id="ffecha" name="ffecha" type="datetime-local" required>
+
+  	<label for="fubi">Ubicación</label>
+      <input type="text" id="fubi" name="fubi"required />
+
+      <label for="ftipo">Provincia</label>
+      <select id="fprov" name="fprov">
+        <% @provincias.each do |provincia| %>
+        <option value="<%= provincia.id %>"><%= provincia.nombre %></option>
+        <% end %>
+
+      </select>
+
+  	<label for="fimg">Imagen &nbsp </label>
+
+s
+      <input id="image-file" type="file" name="fimg" id="fimg" accept="image/*" required/>
+  	<br><br>
+  	<label for="fpunto">Punto en el mapa &nbsp </label>
+    <div" class="banner-bottom-w3l" id="about">
+      <div style="margin: auto;  width: 90%; height: 600px; background-color: #000;" id="mapaE"></div>
+    </div>
+  	<br>
+      <label for="lat">Latitud</label>
+      <input type="text" id="lat" name="lat"required />
+      <label for="lng">Longitud</label>
+      <input type="text" id="lng" name="lng"required />
+      <input type="submit" value="Crear evento">
+    </form>
+  </div>
+
+
+
+	<!--Esta parte es obligatoria tenerla-->
+	<% if @tipo.nombre == "administrador" %>
+	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
+	<% end %>
+	<!---->
+
+
+
+
+
+
+
+
+
+<!-- jquery -->
+	<script src="/assets/jquery-2.1.4.min.js"></script>
+	<!-- //jquery -->
+
+	<script src="/assets/bootstrap.js"></script>
+	<!-- Necessary-JavaScript-File-For-Bootstrap -->
+
+	<script src="/assets/filtro.js"></script>
+
+		<!--  light box js -->
+	<script src="/assets/lightbox-plus-jquery.min.js"></script>
+	<!-- //light box js-->
+
+	<!-- navigation -->
+	<script>
+				$('#menuToggle').click(function (e) {
+					var $parent = $(this).parent('.menu');
+					$parent.toggleClass("open");
+					var navState = $parent.hasClass('open') ? "hide" : "show";
+					$(this).attr("title", navState + " navigation");
+					// Set the timeout to the animation length in the CSS.
+					setTimeout(function () {
+						console.log("timeout set");
+						$('#menuToggle > span').toggleClass("navClosed").toggleClass("navOpen");
+					}, 200);
+					e.preventDefault();
+				});
+	</script>
+	<!-- //navigation -->
+
+	<script>
+		$(document).ready(function(){
+  		$('.dropdown-submenu a.test').on("click", function(e){
+    	$(this).next('ul').toggle();
+    		e.stopPropagation();
+    		e.preventDefault();
+  		});
+		});
+	</script>
+
+  <script src="/assets/newevento.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzz7EeKHpMa9HmoJukP9B1pRJ6TS2QM1U&callback=initMap"
+  async defer></script>
+=======
 <h1>Crear Evento</h1>
+>>>>>>> 32f4e96dd730ed2285857df15a5809bb039d9c5a

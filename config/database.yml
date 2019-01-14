@@ -7,18 +7,18 @@
 default: &default
     adapter: mysql2
     encoding: utf8
-    database: proyectoweb
-    username: joseph
-    password: Joseph2131998
+    database: ecorumdb
+    username: root
+    password: root
     host: 127.0.0.1
     port: 3306
 
 development:
     adapter: mysql2
     encoding: utf8
-    database: proyectoweb
-    username: joseph
-    password: Joseph2131998
+    database: ecorumdb
+    username: root
+    password: root
     host: 127.0.0.1
     port: 3306
 

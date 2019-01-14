@@ -145,5 +145,5 @@
 		"</div><div style='width: 40%;' class='what-right'><a id='user-"+datos.usuarios[i].id+"' onclick='borrarUsuario("+datos.usuarios[i].id+")'>"+
 		"<i style='background-color: #ff4f81' class='fas fa-trash-alt' aria-hidden='true'></i></a></div><div style='width: 50%;' class='what-right'>"+
 		"<h4>"+datos.usuarios[i].nombre+"</h4><p>"+datos.usuarios[i].correo+"</p></div><div class='clearfix'></div></div>";
-			}	
+			}
 		}
