@@ -52,6 +52,34 @@ ul{
 label{
 	margin:0;
 }
+.divPrincipal{
+    
+    width: 350px;
+    height: auto;
+    min-height: 500px;
+    left: 0;
+    right: 0;
+    margin: auto; 
+    border-radius: 20px; 
+    background-color: white;
+    z-index: 1;
+    position: absolute;
+}
+
+.divPrincipal .bodyHeader
+{
+    height: 80px;
+    background-color: steelblue;
+}
+
+.divPrincipal .bodyContent
+{
+    height: auto;
+    padding: 50px;
+    min-height: 500px;
+
+}
+
 /*-- banner --*/
 .main-agile {
     position: relative;

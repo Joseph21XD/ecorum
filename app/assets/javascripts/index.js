@@ -3,6 +3,91 @@
 			document.getElementById("password2").onchange = validatePassword;
 		}
 
+		window.onload = function () {
+			document.getElementById("newpass").onchange = validatePassword2;
+			document.getElementById("newpass2").onchange = validatePassword2;
+		}
+
+		function anular(){
+			document.updform.newname.disabled = !document.updform.newname.disabled
+			document.updform.oldpass.disabled = !document.updform.oldpass.disabled
+			document.updform.newpass.disabled = !document.updform.newpass.disabled
+			document.updform.newpass2.disabled = !document.updform.newpass2.disabled
+
+		} 
+
+		function validarUpdate(){
+			if(document.getElementById("newname").disabled == false){
+				var name = document.getElementById("newname").value;
+				var parameters = { 'name': name};
+				var datos;
+	     		$.ajax({
+	  				url: 'updnombre.json',
+	  				dataType: 'json',
+	  				async: false,
+	  				data: parameters,
+	  				success: function(data) {
+		    			if(data.result=="true"){
+							datos= true;
+						}
+						else{
+							datos= false;
+							$("#myplog").html("Error en la modificación");
+						}
+	  				}
+				});
+
+				return datos;
+			}else{
+				var oldpass = document.getElementById("oldpass").value;
+				var newpass = document.getElementById("newpass").value;
+				var newpass2 = document.getElementById("newpass2").value;
+				var parameters = { 'oldpass': oldpass, 'newpass': newpass, 'newpass2': newpass2 };
+				var datos;
+	     		$.ajax({
+	  				url: 'updpassword.json',
+	  				dataType: 'json',
+	  				async: false,
+	  				data: parameters,
+	  				success: function(data) {
+		    			if(data.result=="true"){
+							datos= true;
+						}
+						else{
+							datos= false;
+							$("#myplog").html("Error en la modificación\nActual contraseña incorrecta!");
+						}
+	  				}
+				});
+
+				return datos;
+			}
+			
+		}
+
+		function validarDelete(){
+			var pass = document.getElementById("delpass").value;
+			var parameters = { 'pass': pass };
+			var datos;
+     		$.ajax({
+  				url: 'delete.json',
+  				dataType: 'json',
+  				async: false,
+  				data: parameters,
+  				success: function(data) {
+    			if(data.result=="true"){
+					datos= true;
+				}
+				else{
+					datos= false;
+					$("#myplog").html("Error al eliminar cuenta\nContraseña incorrecta!");
+				}
+  				}
+			});
+
+			return datos;
+		}
+
 		function validatePassword() {
 			var pass2 = document.getElementById("password2").value;
 			var pass1 = document.getElementById("password1").value;
@@ -10,6 +95,16 @@
 				document.getElementById("password2").setCustomValidity("Passwords Don't Match");
 			else
 				document.getElementById("password2").setCustomValidity('');
+			//empty string means no validation error
+		}
+
+		function validatePassword2() {
+			var pass2 = document.getElementById("newpass").value;
+			var pass1 = document.getElementById("newpass2").value;
+			if (pass1 != pass2)
+				document.getElementById("newpass2").setCustomValidity("Passwords Don't Match");
+			else
+				document.getElementById("newpass2").setCustomValidity('');
 			//empty string means no validation error
 		}
 
