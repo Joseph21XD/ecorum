@@ -1,5 +1,5 @@
 class GeneralController < ApplicationController
-	
+
 	def index
 		puts "hola"
 	end
@@ -26,6 +26,7 @@ class GeneralController < ApplicationController
 			puts "FALSE"
 		else
 			puts "ENTRA"
+
 			tipo = TipoUsuario.find_by(nombre: params[:usertype]);
 			@user = Usuario.create(nombre: nombre, correo: correo, contrasenna: pass, imagen: "", tipo_usuario_id: tipo.id, puntaje: 0)
 			if params[:usertype] == "normal"
@@ -47,7 +48,7 @@ class GeneralController < ApplicationController
 		eventosfav.each do |fav|
 			@favs.push(fav.evento_id)
 		end
-		
+
 		@provincias = Provincium.all
 		@categorias = TipoEvento.all
 	end
@@ -58,12 +59,13 @@ class GeneralController < ApplicationController
 		@provincias = Provincium.all
 		@categorias = TipoEvento.all
 
+
 		eventosfav = Favorito.where(usuario_id: @user.id)
 		@favs=[]
 		eventosfav.each do |fav|
 			@favs.push(fav.evento_id)
 		end
-		
+
 		case params[:tipo]
 		when "provincia"
 			@eventos = Evento.where(provincium_id: params[:id]).includes(:usuario, :favoritos)
@@ -73,7 +75,8 @@ class GeneralController < ApplicationController
 			@eventos = Evento.where(tipo_evento_id: params[:id]).includes(:usuario, :favoritos)
 		when "puntaje"
 			@eventos = Evento.all.includes(:usuario, :favoritos).order("Puntaje DESC")
-		else 
+
+		else
 			@eventos = Evento.all.includes(:usuario, :favoritos)
 		end
 
@@ -86,10 +89,11 @@ class GeneralController < ApplicationController
 	end
 
 	def mapa
-		@tipo = TipoUsuario.find(session[:user_type])		
+		@tipo = TipoUsuario.find(session[:user_type])
 	end
 
 	def calendario
+		@tipo = TipoUsuario.find(session[:user_type])
 	end
 
 	def eventos
@@ -131,7 +135,13 @@ class GeneralController < ApplicationController
 		@users = Usuario.where(["nombre LIKE ? AND id != ?", @search, session[:user_id]]).or(Usuario.where("correo LIKE ? AND id != ?", @search, session[:user_id]))
 	end
 
+	def fecha_evento
+		@mes = params[:mes]
+		@anno = params[:anno]
+		@dias = Evento.where('extract(month from fechaHora) = ? AND extract(year  from fechaHora) = ?', @mes , @anno)
+		var = @dias.as_json
+		render :json => var
+	end
+
 
 end
-
-

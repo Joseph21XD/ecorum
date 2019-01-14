@@ -8,19 +8,19 @@
           }
       });
 
-      
+
       var map;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 9.948440 , lng: -84.143611 },
           zoom: 8
         });
-       
+
 
         for (var i = datos.eventos.length - 1; i >= 0; i--) {
 
             var position = {lat: parseFloat(datos.eventos[i].latitud) , lng: parseFloat(datos.eventos[i].longuitud) };
-      
+
             var contentString = '<div id="content">'+
             '<div id="siteNotice">'+
             '</div>'+
@@ -41,7 +41,7 @@
         marker.addListener('click', function() {
           infowindow.open(map, marker);
         });
-  
+
          }
-      
+
       }
