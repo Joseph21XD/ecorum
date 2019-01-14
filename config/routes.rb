@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   #general
   root to: 'general#index'
   get '/login', to: 'general#login'
@@ -28,7 +27,6 @@ Rails.application.routes.draw do
 
   #organizacion
   get '/organizacion/evento', to: 'organizacion#evento'
-  get '/organizacion/upload', to: 'organizacion#upload'
 
   #administrador
   get '/administrador/usuario', to: 'administrador#usuario'

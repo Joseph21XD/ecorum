@@ -26,11 +26,13 @@ class GeneralController < ApplicationController
 			puts "FALSE"
 		else
 			puts "ENTRA"
-			tipo = TipoUsuario.find_by(nombre: "normal");
-			puts tipo.nombre
+
+			tipo = TipoUsuario.find_by(nombre: params[:usertype]);
 			@user = Usuario.create(nombre: nombre, correo: correo, contrasenna: pass, imagen: "", tipo_usuario_id: tipo.id, puntaje: 0)
-			session[:user_id]= @user.id
-			session[:user_type]= tipo.id
+			if params[:usertype] == "normal"
+				session[:user_id]= @user.id
+				session[:user_type]= tipo.id
+			end
 			puts "TRUE"
 			@result = "true"
 		end
@@ -57,6 +59,13 @@ class GeneralController < ApplicationController
 		@provincias = Provincium.all
 		@categorias = TipoEvento.all
 
+
+		eventosfav = Favorito.where(usuario_id: @user.id)
+		@favs=[]
+		eventosfav.each do |fav|
+			@favs.push(fav.evento_id)
+		end
+
 		case params[:tipo]
 		when "provincia"
 			@eventos = Evento.where(provincium_id: params[:id]).includes(:usuario, :favoritos)
@@ -66,6 +75,7 @@ class GeneralController < ApplicationController
 			@eventos = Evento.where(tipo_evento_id: params[:id]).includes(:usuario, :favoritos)
 		when "puntaje"
 			@eventos = Evento.all.includes(:usuario, :favoritos).order("Puntaje DESC")
+
 		else
 			@eventos = Evento.all.includes(:usuario, :favoritos)
 		end
