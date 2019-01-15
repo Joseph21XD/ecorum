@@ -119,6 +119,12 @@ class GeneralController < ApplicationController
 		end
 	end
 
+	def ranking
+		@tipo = TipoUsuario.find(session[:user_type])
+		eltipo= TipoUsuario.find_by(nombre: "institucion")
+		@usuarios = Usuario.where(tipo_usuario_id: eltipo.id).order("puntaje DESC")
+	end
+
 	def favorito
 		if(params[:tipo] == "add")
 			fav = Favorito.create(evento_id: params[:id], usuario_id: session[:user_id])

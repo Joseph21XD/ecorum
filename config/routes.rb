@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/fecha_evento', to: 'general#fecha_evento'
   get '/eventos', to: 'general#eventos'
   get '/evento', to: 'general#evento'
+  get '/ranking', to: 'general#ranking'
   get '/favorito', to: 'general#favorito'
   get '/comentario', to: 'general#comentario'
   get '/borrarusuario', to: 'general#borrarusuario'

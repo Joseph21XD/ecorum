@@ -2800,3 +2800,32 @@ input[type=submit]:hover {
   border-radius: 5px;
   padding: 20px;
 }
+
+.numberCircle {
+  border-radius: 50%;
+  behavior: url(PIE.htc);
+  /* remove if you don't care about IE8 */
+  width: 75px;
+  height: 75px;
+  padding-top: 20px;
+  background: #56d25b;
+  border: 2px solid #b6e717;
+  color: #fff;
+  text-align: center;
+  font: 32px Arial, sans-serif;
+}
+
+.golden{
+    background-color: rgb(236,194,86) ;
+    border-color: rgb(216,159,53);
+}
+
+.silver{
+    background-color: rgb(202,202,202);
+    border-color: rgb(135,135,135);
+}
+
+.bronze{
+    background-color: rgb(233,135,95);
+    border-color: rgb(227,116,80);   
+}
