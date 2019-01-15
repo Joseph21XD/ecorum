@@ -9,6 +9,9 @@ class GeneralController < ApplicationController
 		pass = params[:pass]
 		if Usuario.exists?(correo: correo, contrasenna: pass)
 			@user= Usuario.find_by(correo: correo, contrasenna: pass)
+			puts "VALORES"
+			puts @user.id
+			puts @user.tipo_usuario_id
 			session[:user_id]= @user.id
 			session[:user_type]= @user.tipo_usuario_id
 			@result = "true"
@@ -29,7 +32,7 @@ class GeneralController < ApplicationController
 
 			tipo = TipoUsuario.find_by(nombre: params[:usertype]);
 			@user = Usuario.create(nombre: nombre, correo: correo, contrasenna: pass, imagen: "", tipo_usuario_id: tipo.id, puntaje: 0)
-			if params[:usertype] == "normal"
+			if params[:tipo] == "registroNormal"
 				session[:user_id]= @user.id
 				session[:user_type]= tipo.id
 			end
@@ -51,6 +54,10 @@ class GeneralController < ApplicationController
 
 		@provincias = Provincium.all
 		@categorias = TipoEvento.all
+	end
+
+	def indexpost
+		redirect_to :controller => 'general' , :action => 'main'
 	end
 
 	def filtro
@@ -143,5 +150,15 @@ class GeneralController < ApplicationController
 		render :json => var
 	end
 
+	def changeimage
+
+		@usuario = Usuario.find(session[:user_id])
+  		@usuario.update_attribute(:image, params[:usuario][:image])
+  		@tipo = TipoUsuario.find(session[:user_type])
+		redirect_to :controller => @tipo.nombre , :action => 'perfil'
+
+	end
+
 
 end
+

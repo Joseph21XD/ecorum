@@ -42,7 +42,8 @@
 							<a href="#" data-toggle="modal" data-target="#myModal2">
 								Registrate ahora</a>
 						</p>
-						<form action="/main" onsubmit="return validarLogin()">
+						<form action="/" method="POST" onsubmit="return validarLogin()">
+							<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 							<div class="styled-input agile-styled-input-top">
 								<input type="text" placeholder="Usuario" id="logname" name="name" required="">
 							</div>
@@ -80,7 +81,8 @@
 						<p>
 							únete a nuestra comunidad
 						</p>
-						<form action="/main" onsubmit="return registrar()">
+						<form action="/" method="POST" onsubmit="return registrar()">
+							<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 							<div class="styled-input agile-styled-input-top">
 								<input type="text" placeholder="Nombre" name="name" id="namereg" required="">
 							</div>
@@ -94,6 +96,7 @@
 								<input type="password" placeholder="Confirmar Contraseña" name="password2" id="password2" required="">
 							</div>
 							<input type="radio" class="messageCheckbox" name="optradio" value="normal" checked hidden>
+							<input type="hidden"  name="mysubmit" id="mysubmit" value="registroNormal">
 							<input type="submit" value="Registrar">
 							<p style="color: #f00;" id="mypreg"></p>
 						</form>

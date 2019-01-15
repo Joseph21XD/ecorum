@@ -2,7 +2,7 @@ class OrganizacionController < ApplicationController
 	def perfil
 		@user = Usuario.find(session[:user_id])
 		@tipo = TipoUsuario.find(session[:user_type])
-		@eventos = Evento.all.includes(:usuario, :favoritos)
+		@eventos = Evento.where(usuario_id: session[:user_id]).includes(:usuario, :favoritos)
 	end
 	def updnombre
 		nombre = params[:name]
@@ -37,6 +37,10 @@ class OrganizacionController < ApplicationController
 		@usuarios = Usuario.all
 		@categorias = TipoEvento.all
 		@provincias = Provincium.all
+		@evento = Evento.new
+	end
+
+	def eventoPost
 		nombre = params[:fname]
 		descrip = params[:fdesc]
 		tipo = params[:ftipo]
@@ -46,9 +50,11 @@ class OrganizacionController < ApplicationController
 		provincia = params[:fprov]
 		latitud = params[:lat]
 		longitud = params[:lng]
+		image = params[:evento][:image]
 		@evento = Evento.create(nombre: nombre, fechaHora: fecha, ubicacion: ubicacion, usuario_id: session[:user_id],
-			 descripcion: descrip, latitud: latitud,longuitud: longitud,imagen: "",puntaje: puntajes,tipo_evento_id: tipo, provincium_id: provincia)
+			 descripcion: descrip, latitud: latitud,longuitud: longitud,imagen: "",puntaje: puntajes,tipo_evento_id: tipo, provincium_id: provincia, image: image)
+		redirect_to :controller => 'general', :action => 'main'
 
-		end
+	end
 
 end

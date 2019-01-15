@@ -84,8 +84,11 @@
 					<div class="spandiv"><h4 class="spandiv-left"><span class="infotitle">Descripción: </span></h4><p class="spandiv-right"><%= evento.descripcion %></p></div>
 			</div>
 				<!-- Stats-->
-			<div class="col-md-7 stats-info-agile" style="background: url('assets/a3.jpg') ">
-					<div class="w3l-right-stats">
+			<div class="col-md-7 stats-info-agile">
+						<div class="w3l-right-stats-image">
+							<img src="<%= evento.image.url%>">
+						</div>
+						<div class="w3l-right-stats">
 						<div class="stats-grid stat-border">
 							<div class='numscroller numscroller-big-bottom'><%= evento.puntaje %></div>
 							<p>Puntaje</p>
@@ -111,7 +114,10 @@
 				<div class="container  stats-info-agile">
 			<div class="welcome-sub-wthree border-0">
 								<!-- Stats-->
-			<div class="col-md-7 stats-info-agile" style="background: url('assets/a3.jpg') ">
+			<div class="col-md-7 stats-info-agile">
+					<div class="w3l-left-stats-image">
+						<img src="<%= evento.image.url%>">
+					</div>
 					<div class="w3l-left-stats">
 						<div class="stats-grid stat-border">
 							<div class='numscroller numscroller-big-bottom'><%= evento.puntaje %></div>
@@ -150,7 +156,7 @@
 
 
 		<!--Esta parte es obligatoria tenerla-->
-	<% if @tipo.nombre == "administrador" %>
+			<% if @tipo.nombre == "administrador" %>
 	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
@@ -189,6 +195,10 @@
     						<div class="radio">
       							<label><input type="radio" class="messageCheckbox" name="optradio" value="organizacion">Organización</label>
     						</div>
+    						<div class="radio">
+      							<label><input type="radio" class="messageCheckbox" name="optradio" value="normal">Normal</label>
+    						</div>
+    						<input type="hidden"  name="mysubmit" id="mysubmit" value="registroAdmin">
 							<input type="button" onclick="registrar()" value="Registrar">
 							<p style="color: #f00;" id="mypreg"></p>
 						</form>
