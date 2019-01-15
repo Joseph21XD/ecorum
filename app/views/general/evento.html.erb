@@ -38,7 +38,7 @@
 	</div>
 
 	<!--Video-->
-	<div class="video-w3l" style="background-image: url('assets/a3.jpg'); ">
+	<div class="video-w3l" style="background-image: url('<%= @evento.image.url %>'); ">
 		<h5><%= @evento.nombre %></h5>
 	</div>
 
@@ -54,7 +54,10 @@
 					<div class="spandiv"><h4 class="spandiv-left"><span class="infotitle">Organización: </span></h4><p class="spandiv-right"><%= @evento.usuario.nombre %></p></div>
 					<div class="spandiv"><h4 class="spandiv-left"><span class="infotitle">Descripción: </span></h4><p class="spandiv-right"><%= @evento.descripcion %></p></div>
 			</div>
-			<div class="col-md-7 stats-info-agile" style="background: url('assets/a3.jpg') ">
+			<div class="col-md-7 stats-info-agile">
+					<div class="w3l-right-stats-image">
+						<img src="<%= @evento.image.url%>">
+					</div>
 					<div class="w3l-right-stats">
 						<div class="stats-grid stat-border">
 							<div class='numscroller numscroller-big-bottom'><%= @evento.puntaje %></div>
@@ -96,7 +99,7 @@
 
 					<div class="what-top1">
 						<div class="what-left">
-							<img style="width: 75px; border-radius: 50%;" src="assets/logo.png">
+							<img style="width: 75px; border-radius: 50%;" src="<%= comentario.usuario.image %>">
 						</div>
 						<div class="what-right">
 							<h4><%= comentario.usuario.nombre %></h4>
@@ -119,7 +122,7 @@
 
 
 		<!--Esta parte es obligatoria tenerla-->
-	<% if @tipo.nombre == "administrador" %>
+		<% if @tipo.nombre == "administrador" %>
 	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
@@ -136,7 +139,7 @@
 						<p>
 							únete a nuestra comunidad
 						</p>
-						<form action="/main" onsubmit="return registrar()">
+						<form>
 							<div class="styled-input agile-styled-input-top">
 								<input type="text" placeholder="Nombre" name="name" id="namereg" required="">
 							</div>
@@ -150,15 +153,19 @@
 								<input type="password" placeholder="Confirmar Contraseña" name="password2" id="password2" required="">
 							</div>
 							<div class="radio">
-      							<label><input type="radio" name="optradio" value="administrador" checked>Administrador</label>
+      							<label><input type="radio" class="messageCheckbox" name="optradio" value="administrador" checked>Administrador</label>
     						</div>
     						<div class="radio">
-      							<label><input type="radio" name="optradio" value="institucion">Institución</label>
+      							<label><input type="radio" class="messageCheckbox" name="optradio" value="institucion">Institución</label>
     						</div>
     						<div class="radio">
-      							<label><input type="radio" name="optradio" value="organizacion">Organización</label>
+      							<label><input type="radio" class="messageCheckbox" name="optradio" value="organizacion">Organización</label>
     						</div>
-							<input type="submit" value="Registrar">
+    						<div class="radio">
+      							<label><input type="radio" class="messageCheckbox" name="optradio" value="normal">Normal</label>
+    						</div>
+    						<input type="hidden"  name="mysubmit" id="mysubmit" value="registroAdmin">
+							<input type="button" onclick="registrar()" value="Registrar">
 							<p style="color: #f00;" id="mypreg"></p>
 						</form>
 						<p>

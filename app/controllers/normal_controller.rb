@@ -38,28 +38,12 @@ class NormalController < ApplicationController
 		end
 	end
 
-	def new
-  		@evento = Evento.new
- 	end
+	def changeimage
 
- 	#Create action ensures that submitted photo gets created if it meets the requirements
- 	def create
-  		puts "PARAMETROS________________________"
-  		puts evento_params
-  		@evento = Evento.find(1)
-  		@evento.update_attribute(:image, params[:evento][:image])
-  		if @evento.save
-   			redirect_to :index
-  		else
-   			render :new
-  		end
- 	end
+		@usuario = Usuario.find(session[:user_id])
+  		@usuario.update_attribute(:image, params[:usuario][:image])
+  		redirect_to :controller => 'normal', :action => 'perfil'
 
-	 private
-
-	def evento_params
-  		params.require(:evento).permit(:image)
 	end
-
 
 end

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   #general
   root to: 'general#index'
+  post '/', to: 'general#indexpost'
   get '/login', to: 'general#login'
   get '/register', to: 'general#register'
   get '/main', to: 'general#main'
@@ -15,6 +16,8 @@ Rails.application.routes.draw do
   get '/comentario', to: 'general#comentario'
   get '/borrarusuario', to: 'general#borrarusuario'
   get '/buscarusuario', to: 'general#buscarusuario'
+  get '/modificar', to: 'general#modificar'
+  patch '/changeimage', to: 'normal#changeimage'
 
   #perfiles
   get '/normal/perfil', to: 'normal#perfil'
@@ -25,7 +28,7 @@ Rails.application.routes.draw do
   #normal
   get '/normal/updnombre', to: 'normal#updnombre'
   get '/normal/updpassword', to: 'normal#updpassword' 
-  get '/normal/delete', to: 'normal#delete' 
+  get '/normal/delete', to: 'normal#delete'
 
   #institucion
   get '/institucion/comprobacion', to: 'institucion#comprobacion'
@@ -46,10 +49,6 @@ Rails.application.routes.draw do
   get '/administrador/comprobacion', to: 'administrador#comprobacion'
   get '/administrador/updnombre', to: 'administrador#updnombre'
   get '/administrador/updpassword', to: 'administrador#updpassword' 
-  get '/administrador/delete', to: 'administrador#delete'     
-
-  get '/normal', to: 'normal#index'
-  get '/normal/new', to: 'normal#new'
-  post '/normal', to: 'normal#create'
+  get '/administrador/delete', to: 'administrador#delete' 
 
 end

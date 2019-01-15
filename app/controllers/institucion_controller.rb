@@ -32,6 +32,9 @@ class InstitucionController < ApplicationController
 			@result = "false"
 		end
 	end
+
+
+
 	def comprobacion
 	end
 end

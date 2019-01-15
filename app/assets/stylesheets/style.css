@@ -684,13 +684,12 @@ h6.w3l-style {
 /*-- stats --*/
 .stats-info-agile {
     
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -ms-background-size: cover;
-    min-height: 390px;
-    padding:0;
+    background-size: contain;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    -ms-background-size: contain;
+    padding: 0px;
     -webkit-box-shadow: 0px 3px 5px 0px rgba(10, 10, 10, 0.47);
     -moz-box-shadow: 0px 3px 5px 0px rgba(10, 10, 10, 0.47);
     box-shadow: 0px 3px 5px 0px rgba(10, 10, 10, 0.47);
@@ -721,6 +720,20 @@ h6.w3l-style {
     width: 33%;
     float: left;
     text-align: center;
+}
+
+.w3l-left-stats-image{
+    width: 65%;
+    float: right;
+    margin-right : 2%;
+
+}
+
+.w3l-right-stats-image{
+    width: 65%;
+    float: left;
+    margin-right: 2%;
+
 }
 /*-- //stats --*/
 /*-- //about --*/
