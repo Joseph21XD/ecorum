@@ -1,0 +1,8 @@
+Merge branch 'master' of https://github.com/Joseph21XD/ecorum
+
+# Conflicts:
+#	Gemfile.lock
+#	app/assets/stylesheets/style.css
+#	config/database.yml
+#	config/routes.rb
+#	public/images/original/missing.png
