@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190114001256) do
+ActiveRecord::Schema.define(version: 20190114210932) do
 
   create_table "comentarios", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "usuario_id"
@@ -100,6 +100,10 @@ ActiveRecord::Schema.define(version: 20190114001256) do
     t.bigint "tipo_usuario_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["tipo_usuario_id"], name: "index_usuarios_on_tipo_usuario_id"
   end
 

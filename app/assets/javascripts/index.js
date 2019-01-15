@@ -137,7 +137,10 @@
 			var name = document.getElementById("namereg").value;
 			var email = document.getElementById("emailreg").value;
 			var pass = document.getElementById("password1").value;
-			var parameters = { 'name': name, 'pass': pass, 'email': email};
+			var pass2 = document.getElementById("password2").value;
+			var usertype = $('.messageCheckbox:checked').val();
+			var tipo = document.getElementById("mysubmit").value;
+			var parameters = { 'name': name, 'pass': pass, 'email': email, 'usertype': usertype, 'tipo': tipo};
 			var datos;
      		$.ajax({
   				url: 'register.json',
@@ -147,10 +150,18 @@
   				success: function(data) {
     			if(data.result=="true"){
 					datos= true;
+					$("#mypreg").html("¡Usuario agregado exitósamente!").css('color', 'gray');
+					name.value= "";
+					email.value= "";
+					pass.value="";
+					pass2.value="";
+
 				}
 				else{
 					datos= false;
-					$("#mypreg").html("Error, correo existente");
+					$("#mypreg").html("¡Error, correo existente!").css('color', 'red');
+					email.value= "";
+
 				}
   				}
 			});
@@ -199,8 +210,9 @@
 			});
 			var count = $("#listacomentarios").children().length;
 			for (var i = count; i<datos.comentarios.length; i++) {
-				comments.innerHTML+="<div class=\"what-top1\"><div class=\"what-left\"><img style=\"width: 75px; border-radius: 50%;\" src=\"assets/logo.png\"></div><div class=\"what-right\"><h4>"+datos.comentarios[i].usuario+"</h4><p>"+datos.comentarios[i].detalle+"</p></div><div class=\"clearfix\"></div></div>";
+				comments.innerHTML+="<div class=\"what-top1\"><div class=\"what-left\"><img style=\"width: 75px; border-radius: 50%;\" src=\""+datos.comentarios[i].image+"\"></div><div class=\"what-right\"><h4>"+datos.comentarios[i].usuario+"</h4><p>"+datos.comentarios[i].detalle+"</p></div><div class=\"clearfix\"></div></div>";
 			}
+			x.value="";
 		}
 
 		function borrarUsuario(id){

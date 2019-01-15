@@ -100,11 +100,62 @@
 
 
 
-	<!--Esta parte es obligatoria tenerla-->
 	<% if @tipo.nombre == "administrador" %>
 	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body modal-body-sub_agile">
+					<div class="main-mailposi">
+						<span class="fa fa-envelope-o" aria-hidden="true"></span>
+					</div>
+					<div class="modal_body_left modal_body_left1">
+						<h3 class="agileinfo_sign">Registrate</h3>
+						<p>
+							únete a nuestra comunidad
+						</p>
+						<form>
+							<div class="styled-input agile-styled-input-top">
+								<input type="text" placeholder="Nombre" name="name" id="namereg" required="">
+							</div>
+							<div class="styled-input">
+								<input type="email" placeholder="Correo" name="email" id="emailreg" required="">
+							</div>
+							<div class="styled-input">
+								<input type="password" placeholder="Contraseña" name="password" id="password1" required="">
+							</div>
+							<div class="styled-input">
+								<input type="password" placeholder="Confirmar Contraseña" name="password2" id="password2" required="">
+							</div>
+							<div class="radio">
+      							<label><input type="radio" class="messageCheckbox" name="optradio" value="administrador" checked>Administrador</label>
+    						</div>
+    						<div class="radio">
+      							<label><input type="radio" class="messageCheckbox" name="optradio" value="institucion">Institución</label>
+    						</div>
+    						<div class="radio">
+      							<label><input type="radio" class="messageCheckbox" name="optradio" value="organizacion">Organización</label>
+    						</div>
+    						<div class="radio">
+      							<label><input type="radio" class="messageCheckbox" name="optradio" value="normal">Normal</label>
+    						</div>
+    						<input type="hidden"  name="mysubmit" id="mysubmit" value="registroAdmin">
+							<input type="button" onclick="registrar()" value="Registrar">
+							<p style="color: #f00;" id="mypreg"></p>
+						</form>
+						<p>
+							<a href="#">Acepto los términos y condiciones</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<!-- //Modal content-->
+		</div>
+	</div>
 	<% end %>
-	<!---->
 
 
 
