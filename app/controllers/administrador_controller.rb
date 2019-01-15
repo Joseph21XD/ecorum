@@ -52,6 +52,9 @@ class AdministradorController < ApplicationController
 		@usuarios = Usuario.where.not(id: session[:user_id]).order("nombre ASC")
 	end
 	def comprobacion
+			@tipo = TipoUsuario.find(session[:user_type])
+			@eventos_past = Evento.where("fechaHora <= now()")
+			@evento = params[:id]
+			@comprobaciones = Comprobacion.where(evento_id: @evento)
 	end
 end
-

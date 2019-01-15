@@ -36,5 +36,28 @@ class InstitucionController < ApplicationController
 
 
 	def comprobacion
+		@tipo = TipoUsuario.find(session[:user_type])
+		@eventos_past = Evento.where("fechaHora <= now()")
+	end
+
+	def addevidence
+		@user = Usuario.find(session[:user_id])
+		@tipo = TipoUsuario.find(session[:user_type])
+		evento = params[:fevento]
+		experiencia = params[:comment]
+		@eventoX = Evento.find(evento)
+		@comprobacion = Comprobacion.create(usuario_id: @user.id, evento_id: evento, comentario: experiencia, comentarioAdmin: "")
+		@evidencia = Evidencium.new
+	end
+
+
+	def newevidence
+		comp = params[:idcomp]
+		evento = params[:event]
+		@tipo = TipoUsuario.find(session[:user_type])
+		@eventoX = Evento.find(evento)
+		@comprobacion = Comprobacion.find(comp)
+		@evidencia = Evidencium.new
+		render('addevidence')
 	end
 end

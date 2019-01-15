@@ -38,27 +38,23 @@
 	</div>
 
   <br><br><br><br>
-  	<h1 style="color:#56D25B;">&nbsp &nbsp Enviar Comprobaciones</h1>
+  	<h1 style="color:#56D25B;">&nbsp &nbsp Adjuntar evidencia para <%= @eventoX.nombre %></h1>
   	<br>
-  	<p> &nbsp &nbsp Acá podrás enviar la evidencia si fuiste parte de un evento, uno de nuestros administradores comprobará el material enviado, ¡quedate atento al resultado! </p>
+  	<p> &nbsp &nbsp Adjunte las imagenes relacionadas con su participación. </p>
   	<div class="diva">
-    <form action="addevidence" id="compr_form">
-      <label for="fevento">Evento al que asistí</label>
-      <select id="fevento" name="fevento">
-        <% @eventos_past.each do |evento| %>
-        <option value="<%= evento.id %>"><%= evento.nombre + " - " + evento.ubicacion + " - " + evento.fechaHora.to_s  %></option>
-        <% end %>
+    <%= form_for @evidencia, :url => '/institucion/addevidence?idcomp=' + @comprobacion.id.to_s + "&event="+ @eventoX.id.to_s, html: { multipart: true } do |f| %>
 
-      </select>
+    <div class="form-group">
+  	<label for="fimg">Imagen &nbsp </label>
+    <%= f.file_field :image, class: 'form-control' %>
+  	</div>
+
   	<br><br>
-
-  	<label for="fexp">¡Contanos la experiencia!</label><br>
-      <textarea name="comment" form="compr_form">¿Cómo estuvo el evento?</textarea>
-
-
-      <input type="submit" value="Adjuntar evidencia">
-    </form>
+      <%= f.submit 'Adjuntar imagen' %>
+    <% end %>
   </div>
+<br>
+  <a href="/main">&nbsp &nbsp Finalizar</a>
 
 
 
