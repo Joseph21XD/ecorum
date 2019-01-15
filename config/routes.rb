@@ -35,8 +35,9 @@ Rails.application.routes.draw do
   get '/institucion/updnombre', to: 'institucion#updnombre'
   get '/institucion/updpassword', to: 'institucion#updpassword'
   get '/institucion/delete', to: 'institucion#delete'
-  get '/institucion/addevidence', to: 'institucion#addevidence'
-  post '/institucion/addevidence', to: 'institucion#newevidence'
+  get '/institucion/evidencia', to: 'institucion#evidencia'
+  post '/institucion/comprobacion', to: 'institucion#addevidence'
+  post '/institucion/evidencia', to: 'institucion#newevidence'
 
   #organizacion
   get '/organizacion/evento', to: 'organizacion#evento'

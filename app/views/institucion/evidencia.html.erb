@@ -38,32 +38,26 @@
 	</div>
 
   <br><br><br><br>
-  	<h1 style="color:#56D25B;">&nbsp &nbsp Adjuntar evidencia para <%= @eventoX.nombre %></h1>
+  	<h1 style="color:#56D25B;">&nbsp &nbsp Adjuntar evidencia para <%= @comprobacion.evento.nombre %></h1>
   	<br>
   	<p> &nbsp &nbsp Adjunte las imagenes relacionadas con su participación. </p>
   	<div class="diva">
-    <%= form_for @evidencia, :url => '/institucion/addevidence?idcomp=' + @comprobacion.id.to_s + "&event="+ @eventoX.id.to_s, html: { multipart: true } do |f| %>
-
+    <%= form_for @evidencia, :url => '/institucion/evidencia', html: { multipart: true } do |f| %>
     <div class="form-group">
   	<label for="fimg">Imagen &nbsp </label>
     <%= f.file_field :image, class: 'form-control' %>
   	</div>
-
   	<br><br>
-      <%= f.submit 'Adjuntar imagen' %>
+     <%= f.submit 'Adjuntar imagen' %>
     <% end %>
-  </div>
-<br>
-  <a href="/main">&nbsp &nbsp Finalizar</a>
-
-
-
-	<!--Esta parte es obligatoria tenerla-->
-	<% if @tipo.nombre == "administrador" %>
-	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
-	<% end %>
-	<!---->
-
+    <a href="/main">&nbsp &nbsp Finalizar</a>
+    <div style="margin-top: 10px; ">
+  	<% @comprobacion.evidencia.each do |evidencia|%>
+  		<img src="<%= evidencia.image.url %>" alt="evidencia" class="img-thumbnail" style="width: 150px; height: 150px;">
+  	<% end %>
+	</div>
+  	</div>
+	<br>
 
 
 

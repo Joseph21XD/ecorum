@@ -42,11 +42,12 @@
   	<br>
   	<p> &nbsp &nbsp Acá podrás enviar la evidencia si fuiste parte de un evento, uno de nuestros administradores comprobará el material enviado, ¡quedate atento al resultado! </p>
   	<div class="diva">
-    <form action="addevidence" id="compr_form">
+    <form action="comprobacion"  method="POST" id="compr_form">
+    	<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
       <label for="fevento">Evento al que asistí</label>
       <select id="fevento" name="fevento">
         <% @eventos_past.each do |evento| %>
-        <option value="<%= evento.id %>"><%= evento.nombre + " - " + evento.ubicacion + " - " + evento.fechaHora.to_s  %></option>
+        <option value="<%= evento.id %>"><%= evento.nombre + " - " + evento.ubicacion + " - " +  evento.fechaHora.strftime("%d-%m-%Y    %l:%M %p")   %></option>
         <% end %>
 
       </select>

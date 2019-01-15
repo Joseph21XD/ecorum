@@ -33,6 +33,17 @@ class InstitucionController < ApplicationController
 		end
 	end
 
+	def evidencia
+		@tipo = TipoUsuario.find(session[:user_type])
+		@comprobacion = Comprobacion.where(id: session[:comprob]).includes(:evento, :evidencia).take
+		@evidencia = Evidencium.new
+	end
+
+	def newevidence
+		
+  		@evidencia = Evidencium.create(comprobacion_id: session[:comprob], image: params[:evidencium][:image])
+		redirect_to :controller => 'institucion', :action => 'evidencia'
+	end
 
 
 	def comprobacion
@@ -47,17 +58,7 @@ class InstitucionController < ApplicationController
 		experiencia = params[:comment]
 		@eventoX = Evento.find(evento)
 		@comprobacion = Comprobacion.create(usuario_id: @user.id, evento_id: evento, comentario: experiencia, comentarioAdmin: "")
-		@evidencia = Evidencium.new
-	end
-
-
-	def newevidence
-		comp = params[:idcomp]
-		evento = params[:event]
-		@tipo = TipoUsuario.find(session[:user_type])
-		@eventoX = Evento.find(evento)
-		@comprobacion = Comprobacion.find(comp)
-		@evidencia = Evidencium.new
-		render('addevidence')
+		session[:comprob] = @comprobacion.id
+		redirect_to :controller => 'institucion', :action => 'evidencia'
 	end
 end
