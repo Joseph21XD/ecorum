@@ -1,6 +1,6 @@
 	<div class="main-agile">
 		<!-- banner -->
-		<div class="agile-top" style="padding-top: 0; margin-top: 0; background-image: url('/assets/menu.jpg'); ">
+		<div class="agile-top" style="position: fixed; padding-top: 0; margin-top: 0; background-image: url('/assets/menu.jpg'); ">
 			<div class="col-xs-4 logo">
 				<h1>
 					<a href="index.html">
@@ -51,10 +51,10 @@
 		    		Lista de Eventos
 		    	</li>
 		    	<% @eventos.each do |evento| %>
-		    	<li class="list-group-item" style="height: 50px;"><a tabindex="-1" href=""><%= evento.nombre %></a><span class="pull-right">
+		    	<li class="list-group-item" style="height: 50px;"><a tabindex="-1" href="/evento?id=<%= evento.id %>"><%= evento.nombre %></a><span class="pull-right">
 		    		<div class="btn-group" style="position: relative; right: 0%;">
-						<button type="button" class="btn btn-success" style="border-radius: 50px;"><i class="fas fa-pencil-alt"></i></button>
-						<button type="button" class="btn btn-danger" style="border-radius: 50px; margin-left: 5px;"><i class="fas fa-trash-alt"></i></button>
+						<a type="button" class="btn btn-success" style="border-radius: 50px;"><i class="fas fa-pencil-alt"></i></a>
+						<button type="button" id="<%= evento.id %>" class="btn btn-danger" data-toggle="modal" data-target="#myModal3" onclick="getId(this)" style="border-radius: 50px; margin-left: 5px;"><i class="fas fa-trash-alt"></i></button>
 					</div></span>
 		    	</li>
 				<% end %>
@@ -79,23 +79,23 @@
 							Actualización de datos del usuario
 						</p>
 						<form action="/perfil" onsubmit="return validarUpdate()" name="updform">
-							<div class="styled-input agile-styled-input-top">
-								<input type="text" placeholder="Nuevo Nombre" id="newname" name="newname" required="">
+							<label class="radio-inline"><input type="radio" id="optradion" name="optradio" onClick="anular()" checked>Nombre</label>
+							<label class="radio-inline"><input type="radio" id="optradiop" name="optradio" onClick="anular()">Contraseña</label>
+							<div id="name-panel">		
+								<div class="styled-input agile-styled-input-top">
+									<input type="text" placeholder="Nuevo Nombre" id="newname" name="newname" required="">
+								</div>
 							</div>
-							<div class="styled-input">
-								<input type="password" placeholder="Contraseña" disabled="true" id="oldpass" name="oldpass" required="">
-							</div>
-							<div class="styled-input">
-								<input type="password" placeholder="Nueva Contraseña" disabled="true" id="newpass" name="newpass" required="">
-							</div>
-							<div class="styled-input">
-								<input type="password" placeholder="Confirmar Nueva Contraseña" disabled="true" id="newpass2" name="newpass2" required="">
-							</div>
-							<div class="radio">
-							  <label><input type="radio" name="optradio" onClick="anular()" checked>Nombre</label>
-							</div>
-							<div class="radio">
-							  <label><input type="radio" name="optradio" onClick="anular()">Contraseña</label>
+							<div id="pass-panel">
+								<div class="styled-input">
+									<input type="password" placeholder="Contraseña" disabled="true" id="oldpass" name="oldpass" required="">
+								</div>
+								<div class="styled-input">
+									<input type="password" placeholder="Nueva Contraseña" disabled="true" id="newpass" name="newpass" required="">
+								</div>
+								<div class="styled-input">
+									<input type="password" placeholder="Confirmar Nueva Contraseña" disabled="true" id="newpass2" name="newpass2" required="">
+								</div>
 							</div>
 							<input type="submit" value="Guardar">
 							<p style="color: #f00;" id="myplog"></p>
@@ -122,7 +122,7 @@
 						<span class="fa fa-envelope-o" aria-hidden="true"></span>
 					</div>
 					<div class="modal_body_left modal_body_left1">
-						<h3 class="agileinfo_sign">Eliminar</h3>
+						<h3 class="agileinfo_sign">Eliminar Cuenta</h3>
 						<p>
 							Ingrese la contraseña para poder eliminar la cuenta
 						</p>
@@ -131,7 +131,7 @@
 								<input type="password" placeholder="Contraseña" id="delpass" name="delpass" required="">
 							</div>
 							<input type="submit" value="Aceptar">
-							<p style="color: #f00;" id="myplog"></p>
+							<p style="color: #f00;" id="myplog2"></p>
 						</form>
 						<div class="clearfix"></div>
 					</div>
@@ -142,6 +142,39 @@
 		</div>
 	</div>
 	<!-- //Modal2 -->
+
+	<div class="modal fade" id="myModal3" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body modal-body-sub_agile">
+					<div class="main-mailposi">
+						<span class="fa fa-envelope-o" aria-hidden="true"></span>
+					</div>
+					<div class="modal_body_left modal_body_left1">
+						<h3 class="agileinfo_sign">Eliminar Evento</h3>
+						<p>
+							Ingrese la contraseña para poder eliminar la el evento
+						</p>
+						<form action="/perfil" onsubmit="return validarDeleteEv()">
+							<div class="styled-input">
+								<input type="password" placeholder="Contraseña" id="delpassev" name="delpassev" required="">
+							</div>
+							<input type="submit" value="Aceptar">
+							<p style="color: #f00;" id="myplog3"></p>
+						</form>
+						<div class="clearfix"></div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			<!-- //Modal content-->
+		</div>
+	</div>
+	<!-- //Modal3 -->
 
 
 		<!--Esta parte es obligatoria tenerla-->
@@ -245,5 +278,9 @@
     		e.preventDefault();
   		});
 		});
+
+		$(document).ready(function(){
+	        $('#pass-panel').hide();
+	    });
 	</script>
 

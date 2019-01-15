@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   get '/organizacion/updnombre', to: 'organizacion#updnombre'
   get '/organizacion/updpassword', to: 'organizacion#updpassword' 
   get '/organizacion/delete', to: 'organizacion#delete' 
+  get '/organizacion/deleteev', to: 'organizacion#deleteev' 
 
   #administrador
   get '/administrador/usuario', to: 'administrador#usuario'
@@ -45,7 +46,8 @@ Rails.application.routes.draw do
   get '/administrador/comprobacion', to: 'administrador#comprobacion'
   get '/administrador/updnombre', to: 'administrador#updnombre'
   get '/administrador/updpassword', to: 'administrador#updpassword' 
-  get '/administrador/delete', to: 'administrador#delete'     
+  get '/administrador/delete', to: 'administrador#delete' 
+  get '/administrador/deleteev', to: 'administrador#deleteev'     
 
   get '/normal', to: 'normal#index'
   get '/normal/new', to: 'normal#new'

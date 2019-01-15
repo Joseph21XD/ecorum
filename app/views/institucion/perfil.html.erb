@@ -1,6 +1,6 @@
 	<div class="main-agile">
 		<!-- banner -->
-		<div class="agile-top" style="padding-top: 0; margin-top: 0; background-image: url('/assets/menu.jpg'); ">
+		<div class="agile-top" style="position: fixed; padding-top: 0; margin-top: 0; background-image: url('/assets/menu.jpg'); ">
 			<div class="col-xs-4 logo">
 				<h1>
 					<a href="index.html">
@@ -52,11 +52,7 @@
 		    		Lista de Eventos Comprobados
 		    	</li>
 		    	<% @eventos.each do |evento| %>
-		    	<li class="list-group-item" style="height: 50px;"><a tabindex="-1" href=""><%= evento.nombre %></a><span class="pull-right">
-		    		<div class="btn-group" style="position: relative; right: 0%;">
-						<button type="button" class="btn btn-success" style="border-radius: 50px;"><i class="fas fa-pencil-alt"></i></button>
-						<button type="button" class="btn btn-danger" style="border-radius: 50px; margin-left: 5px;"><i class="fas fa-trash-alt"></i></button>
-					</div></span>
+		    	<li class="list-group-item" style="height: 50px;"><a tabindex="-1" href="/comprobacion?id=<%= evento.id %>"><%= evento.nombre %></a>
 		    	</li>
 				<% end %>
 		    </ul>
@@ -132,7 +128,7 @@
 								<input type="password" placeholder="Contraseña" id="delpass" name="delpass" required="">
 							</div>
 							<input type="submit" value="Aceptar">
-							<p style="color: #f00;" id="myplog"></p>
+							<p style="color: #f00;" id="myplog2"></p>
 						</form>
 						<div class="clearfix"></div>
 					</div>
