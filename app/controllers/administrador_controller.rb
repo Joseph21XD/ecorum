@@ -55,6 +55,11 @@ class AdministradorController < ApplicationController
 			@tipo = TipoUsuario.find(session[:user_type])
 			@eventos_past = Evento.where("fechaHora <= now()")
 			@evento = params[:id]
-			@comprobaciones = Comprobacion.where(evento_id: @evento)
+			if(@evento == nil || @evento == '')
+				@evento = "0"
+			else
+				@eventoX = Evento.find(@evento)
+			end
+			@comprobaciones = Comprobacion.where("evento_id = " + @evento + " AND comentarioAdmin = '' ")
 	end
 end

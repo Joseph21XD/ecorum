@@ -1,8 +1,78 @@
+<style>
 
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=text]{
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=datetime-local]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 50%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.diva {
+  border-radius: 5px;
+  padding: 20px;
+}
+
+ul {
+  list-style-type: none;
+  line-height: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  padding: 5px 0;
+}
+li:nth-child(odd) { background: #d9d9d9; }
+
+p{color: #565454;
+}
+</style>
 
 	<div class="main-agile">
 		<!-- banner -->
-		<div class="agile-top" style="padding-top: 0; margin-top: 0; background-image: url('/assets/menu.jpg'); ">
+		<div class="agile-top" style="padding-top: 0; position: fixed; margin-top: 0; background-image: url('/assets/menu.jpg'); ">
 			<div class="col-xs-4 logo">
 				<h1>
 					<a href="index.html">
@@ -49,11 +119,37 @@
       <% end %>
     </select>
 
-
+		<% if(@eventoX != nil) %>
+		<br>	<br>
+		<h2><%= @eventoX.nombre %></h2><br>
+		<% end %>
 		<ul>
-				<% @comprobaciones.each do |comprobacion| %>
-					<p> <%= comprobacion.usuario.nombre %></p>
 
+
+
+				<% @comprobaciones.each do |comprobacion| %>
+						<li>
+							<h2><%= comprobacion.usuario.nombre %><h2><br>
+								<h3>Evidencia</h3>
+								<br>
+									<div class="slideshow-container">
+										<% comprobacion.evidencia.each do |evidencia| %>
+											
+										<% end %>
+									</div>
+								<br>
+								<h3>Experiencia</h3>
+								<br>
+								<p> <%= comprobacion.comentario %></p><br><br>
+								<form>
+								<label for="<% comprobacion.id %>">De acuerdo con el reglamento de Ecorum, el porcentaje de puntos obtenidos para esta institución es</label>
+								<input type="text" id="<% comprobacion.id %>" name="nota" placeholder="0%-100%"><br>
+
+								<label for="<% comprobacion.id %> + com">Comentarios</label><br>
+								<input type="text" id="<% comprobacion.id %> + com" name="comment" placeholder="¿Por qué dicho porcentaje?">
+								<input type="submit" value="Calificar">
+							</form>
+						</li>
 
 				<% end %>
 		</ul>
