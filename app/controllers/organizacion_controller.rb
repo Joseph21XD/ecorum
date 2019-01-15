@@ -32,6 +32,18 @@ class OrganizacionController < ApplicationController
 			@result = "false"
 		end
 	end
+	def deleteev
+		pass = params[:pass]
+		id = params[:evento]
+		puts id
+		if Usuario.exists?(id: session[:user_id], contrasenna: pass)
+			Evento.destroy(id)
+			@result = "true"
+			redirect_to :controller => 'general', :action => 'index'
+		else
+			@result = "false"
+		end
+	end
 	def evento
 		@tipo = TipoUsuario.find(session[:user_type])
 		@usuarios = Usuario.all
