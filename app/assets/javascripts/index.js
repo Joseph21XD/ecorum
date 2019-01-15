@@ -1,3 +1,4 @@
+		var idEventoDel;
 
 		window.onload = function () {
 			document.getElementById("password1").onchange = validatePassword;
@@ -16,6 +17,21 @@
 			document.updform.newpass2.disabled = !document.updform.newpass2.disabled
 
 		} 
+
+		$(document).ready(function(){
+		    $("#optradion").on( "click", function() {	 
+		        $('#pass-panel').hide();
+		        $('#name-panel').show();
+		         });
+	    });
+
+	    $(document).ready(function(){
+		    $("#optradiop").on( "click", function() {	 
+		        $('#pass-panel').show();
+		        $('#name-panel').hide();
+		         });
+	    });
+
 
 		function validarUpdate(){
 			if(document.getElementById("newname").disabled == false){
@@ -81,7 +97,34 @@
 				}
 				else{
 					datos= false;
-					$("#myplog").html("Error al eliminar cuenta\nContraseña incorrecta!");
+					$("#myplog2").html("Error al eliminar cuenta\nContraseña incorrecta!");
+				}
+  				}
+			});
+
+			return datos;
+		}
+
+		function getId(elem){
+			idEventoDel = elem.id;
+		}
+
+		function validarDeleteEv(){
+			var pass = document.getElementById("delpassev").value;
+			var parameters = { 'pass': pass , 'evento': idEventoDel };
+			var datos;
+     		$.ajax({
+  				url: 'deleteev.json',
+  				dataType: 'json',
+  				async: false,
+  				data: parameters,
+  				success: function(data) {
+    			if(data.result=="true"){
+					datos= true;
+				}
+				else{
+					datos= false;
+					$("#myplog3").html("Error al eliminar el evento\nContraseña incorrecta!");
 				}
   				}
 			});

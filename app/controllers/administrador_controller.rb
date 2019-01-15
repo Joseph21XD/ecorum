@@ -32,6 +32,18 @@ class AdministradorController < ApplicationController
 			@result = "false"
 		end
 	end
+	def deleteev
+		pass = params[:pass]
+		id = params[:evento]
+		puts id
+		if Usuario.exists?(id: session[:user_id], contrasenna: pass)
+			Evento.destroy(id)
+			@result = "true"
+			redirect_to :controller => 'general', :action => 'index'
+		else
+			@result = "false"
+		end
+	end
 	def usuario
 		#no tiene html ya que es una respuesta json a javascript mediante ajax a jquery
 	end
