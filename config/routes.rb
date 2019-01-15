@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get '/borrarusuario', to: 'general#borrarusuario'
   get '/buscarusuario', to: 'general#buscarusuario'
   get '/modificar', to: 'general#modificar'
-  patch '/changeimage', to: 'normal#changeimage'
+  patch '/changeimage', to: 'general#changeimage'
 
   #perfiles
   get '/normal/perfil', to: 'normal#perfil'

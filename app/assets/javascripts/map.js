@@ -32,15 +32,17 @@
             '</div>'+
             '</div>';
 
-        var infowindow = new google.maps.InfoWindow({
-          content: contentString
-        });
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
 
-        var marker = new google.maps.Marker({position: position, map: map, title: datos.eventos[i].nombre, icon: '/assets/marker.png'});
+            var marker = new google.maps.Marker({position: position, map: map, title: datos.eventos[i].nombre, icon: '/assets/marker.png'});
 
-        marker.addListener('click', function() {
-          infowindow.open(map, marker);
-        });
+            google.maps.event.addListener(marker,'click', (function(marker,infowindow){ 
+              return function() {
+                infowindow.open(map,marker);
+              };
+              })(marker,infowindow)); 
 
          }
 
