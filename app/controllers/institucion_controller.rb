@@ -40,8 +40,9 @@ class InstitucionController < ApplicationController
 	end
 
 	def newevidence
-		
-  		@evidencia = Evidencium.create(comprobacion_id: session[:comprob], image: params[:evidencium][:image])
+		if params[:evidencium].present?
+  			@evidencia = Evidencium.create(comprobacion_id: session[:comprob], image: params[:evidencium][:image])
+  		end
 		redirect_to :controller => 'institucion', :action => 'evidencia'
 	end
 
