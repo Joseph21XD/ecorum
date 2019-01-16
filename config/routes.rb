@@ -55,6 +55,8 @@ Rails.application.routes.draw do
   get '/administrador/updpassword', to: 'administrador#updpassword'
   get '/administrador/delete', to: 'administrador#delete'
   get '/administrador/deleteev', to: 'administrador#deleteev'
+  get '/administrador/aceptar', to: 'administrador#aceptar'
+  get '/administrador/rechazar', to: 'administrador#rechazar'
 
 
 end
