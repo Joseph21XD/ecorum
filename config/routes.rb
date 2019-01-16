@@ -43,6 +43,8 @@ Rails.application.routes.draw do
   #organizacion
   get '/organizacion/evento', to: 'organizacion#evento'
   post '/organizacion/evento', to: 'organizacion#eventoPost'
+  get '/organizacion/updevento', to: 'organizacion#updevento'
+  patch '/organizacion/updeventoPost', to: 'organizacion#updeventoPost' 
   get '/organizacion/updnombre', to: 'organizacion#updnombre'
   get '/organizacion/updpassword', to: 'organizacion#updpassword'
   get '/organizacion/delete', to: 'organizacion#delete'
@@ -56,6 +58,8 @@ Rails.application.routes.draw do
   get '/administrador/updpassword', to: 'administrador#updpassword'
   get '/administrador/delete', to: 'administrador#delete'
   get '/administrador/deleteev', to: 'administrador#deleteev'
+  get '/administrador/aceptar', to: 'administrador#aceptar'
+  get '/administrador/rechazar', to: 'administrador#rechazar'
 
 
 end

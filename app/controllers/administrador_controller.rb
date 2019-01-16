@@ -55,6 +55,27 @@ class AdministradorController < ApplicationController
 			@tipo = TipoUsuario.find(session[:user_type])
 			@eventos_past = Evento.where("fechaHora <= now()")
 			@evento = params[:id]
-			@comprobaciones = Comprobacion.where(evento_id: @evento)
+			if(@evento == nil || @evento == '')
+				@evento = "0"
+			else
+				@eventoX = Evento.find(@evento)
+			end
+			@comprobaciones = Comprobacion.where("evento_id = " + @evento + " AND comentarioAdmin = '' ")
+	end
+	def aceptar
+
+		comprobacion = params[:comp]
+		usuario = params[:user]
+		evento = params[:even]
+		@eventos = Evento.find(evento)
+		Usuario.connection.execute("Update usuarios SET puntaje= puntaje + " + @eventos.puntaje.to_s + " WHERE id=" + usuario)
+		Comprobacion.connection.execute("Update comprobacions SET comentarioAdmin= 'Ok' WHERE id=" + comprobacion )
+		redirect_to :controller => 'administrador', :action => 'comprobacion'
+	end
+
+	def rechazar
+		comprobacion = params[:comp]
+		Comprobacion.connection.execute("Update comprobacions SET comentarioAdmin= 'No' WHERE id=" + comprobacion )
+		redirect_to :controller => 'administrador', :action => 'comprobacion'
 	end
 end
