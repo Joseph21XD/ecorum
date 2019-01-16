@@ -1,0 +1,111 @@
+
+
+	<div class="main-agile">
+		<!-- banner -->
+		<div class="agile-top" style="padding-top: 0; margin-top: 0; background-image: url('/assets/menu.jpg'); ">
+			<div class="col-xs-4 logo">
+				<h1>
+					<a href="index.html">
+						<span>Eco</span>rum
+						<span><img style="width: 20%; height: 20%;" src="/assets/logo.png"></span></a>
+				</h1>
+			</div>
+			<div class="col-xs-2 menu">
+				<a href="" id="menuToggle">
+					<span class="navClosed"></span>
+				</a>
+				<nav>
+					<a href="/main">Eventos</a>
+					<a href="/perfil">Perfil</a>
+					<a href="/calendario" class="scroll">Calendario</a>
+					<a href="/mapa" class="scroll">Mapa</a>
+					<% case @tipo.nombre %>
+					<% when "institucion" %>
+						<a href="/institucion/comprobacion">Agregar Comprobación</a>
+					<% when "organizacion" %>
+						<a href="/organizacion/evento">Agregar Evento</a>
+					<% when "administrador" %>
+						<a href="/organizacion/evento">Agregar Evento</a>
+						<a href="#" data-toggle="modal" data-target="#myModal1">Agregar Usuario</a>
+						<a href="/administrador/usuarios">ver Usuarios</a>
+						<a href="/administrador/comprobacion">Ver Comprobaciones</a>
+					<% end %>
+					<a href="/">Cerrar Sesión</a>
+				</nav>
+			</div>
+
+		</div>
+	</div>
+
+  <br><br><br><br>
+  	<h1 style="color:#56D25B;">&nbsp &nbsp Adjuntar evidencia para <%= @comprobacion.evento.nombre %></h1>
+  	<br>
+  	<p> &nbsp &nbsp Adjunte las imagenes relacionadas con su participación. </p>
+  	<div class="diva">
+    <%= form_for @evidencia, :url => '/institucion/evidencia', html: { multipart: true } do |f| %>
+    <div class="form-group">
+  	<label for="fimg">Imagen &nbsp </label>
+    <%= f.file_field :image, class: 'form-control' %>
+  	</div>
+  	<br><br>
+     <%= f.submit 'Adjuntar imagen' %>
+    <% end %>
+    <a href="/main">&nbsp &nbsp Finalizar</a>
+    <div style="margin-top: 10px; ">
+  	<% @comprobacion.evidencia.each do |evidencia|%>
+  		<img src="<%= evidencia.image.url %>" alt="evidencia" class="img-thumbnail" style="width: 150px; height: 150px;">
+  	<% end %>
+	</div>
+  	</div>
+	<br>
+
+
+
+
+
+
+
+
+<!-- jquery -->
+	<script src="/assets/jquery-2.1.4.min.js"></script>
+	<!-- //jquery -->
+
+	<script src="/assets/bootstrap.js"></script>
+	<!-- Necessary-JavaScript-File-For-Bootstrap -->
+
+	<script src="/assets/filtro.js"></script>
+
+		<!--  light box js -->
+	<script src="/assets/lightbox-plus-jquery.min.js"></script>
+	<!-- //light box js-->
+
+	<!-- navigation -->
+	<script>
+				$('#menuToggle').click(function (e) {
+					var $parent = $(this).parent('.menu');
+					$parent.toggleClass("open");
+					var navState = $parent.hasClass('open') ? "hide" : "show";
+					$(this).attr("title", navState + " navigation");
+					// Set the timeout to the animation length in the CSS.
+					setTimeout(function () {
+						console.log("timeout set");
+						$('#menuToggle > span').toggleClass("navClosed").toggleClass("navOpen");
+					}, 200);
+					e.preventDefault();
+				});
+	</script>
+	<!-- //navigation -->
+
+	<script>
+		$(document).ready(function(){
+  		$('.dropdown-submenu a.test').on("click", function(e){
+    	$(this).next('ul').toggle();
+    		e.stopPropagation();
+    		e.preventDefault();
+  		});
+		});
+	</script>
+
+  <script src="/assets/newevento.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzz7EeKHpMa9HmoJukP9B1pRJ6TS2QM1U&callback=initMap"
+  async defer></script>

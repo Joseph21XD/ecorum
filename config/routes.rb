@@ -27,14 +27,17 @@ Rails.application.routes.draw do
 
   #normal
   get '/normal/updnombre', to: 'normal#updnombre'
-  get '/normal/updpassword', to: 'normal#updpassword' 
+  get '/normal/updpassword', to: 'normal#updpassword'
   get '/normal/delete', to: 'normal#delete'
 
   #institucion
   get '/institucion/comprobacion', to: 'institucion#comprobacion'
   get '/institucion/updnombre', to: 'institucion#updnombre'
-  get '/institucion/updpassword', to: 'institucion#updpassword' 
-  get '/institucion/delete', to: 'institucion#delete' 
+  get '/institucion/updpassword', to: 'institucion#updpassword'
+  get '/institucion/delete', to: 'institucion#delete'
+  get '/institucion/evidencia', to: 'institucion#evidencia'
+  post '/institucion/comprobacion', to: 'institucion#addevidence'
+  post '/institucion/evidencia', to: 'institucion#newevidence'
 
   #organizacion
   get '/organizacion/evento', to: 'organizacion#evento'
@@ -42,18 +45,20 @@ Rails.application.routes.draw do
   get '/organizacion/updevento', to: 'organizacion#updevento'
   patch '/organizacion/updeventoPost', to: 'organizacion#updeventoPost' 
   get '/organizacion/updnombre', to: 'organizacion#updnombre'
-  get '/organizacion/updpassword', to: 'organizacion#updpassword' 
-  get '/organizacion/delete', to: 'organizacion#delete' 
-  get '/organizacion/deleteev', to: 'organizacion#deleteev' 
+  get '/organizacion/updpassword', to: 'organizacion#updpassword'
+  get '/organizacion/delete', to: 'organizacion#delete'
+  get '/organizacion/deleteev', to: 'organizacion#deleteev'
 
   #administrador
   get '/administrador/usuario', to: 'administrador#usuario'
   get '/administrador/usuarios', to: 'administrador#usuarios'
   get '/administrador/comprobacion', to: 'administrador#comprobacion'
   get '/administrador/updnombre', to: 'administrador#updnombre'
-  get '/administrador/updpassword', to: 'administrador#updpassword' 
-  get '/administrador/delete', to: 'administrador#delete' 
-  get '/administrador/deleteev', to: 'administrador#deleteev'     
+  get '/administrador/updpassword', to: 'administrador#updpassword'
+  get '/administrador/delete', to: 'administrador#delete'
+  get '/administrador/deleteev', to: 'administrador#deleteev'
+  get '/administrador/aceptar', to: 'administrador#aceptar'
+  get '/administrador/rechazar', to: 'administrador#rechazar'
 
 
 end

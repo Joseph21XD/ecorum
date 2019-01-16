@@ -34,9 +34,9 @@ input[type="button"],input[type="submit"]{
 	-ms-transition:0.5s all;
 }
 h1,h2,h3,h4,h5,h6{
-	margin:0;	
+	margin:0;
 	font-family: 'Rasa', serif;
-}	
+}
 p{
 	margin:0;
 	font-family: 'Open Sans', sans-serif;
@@ -53,14 +53,14 @@ label{
 	margin:0;
 }
 .divPrincipal{
-    
+
     width: 350px;
     height: auto;
     min-height: 500px;
     left: 0;
     right: 0;
-    margin: auto; 
-    border-radius: 20px; 
+    margin: auto;
+    border-radius: 20px;
     background-color: white;
     z-index: 1;
     position: absolute;
@@ -352,7 +352,7 @@ nav a:hover:after {
 }
 /*-- //menu-navigation --*/
 
-/*-- banner-text --*/ 
+/*-- banner-text --*/
 .header-w3layouts{
     position: absolute;
     top: 0;
@@ -683,7 +683,7 @@ h6.w3l-style {
 }
 /*-- stats --*/
 .stats-info-agile {
-    
+
     background-size: contain;
     -webkit-background-size: contain;
     -moz-background-size: contain;
@@ -936,7 +936,7 @@ a.w3-buttons {
 }
 .team-info{
     position: relative;
-    overflow: hidden;	
+    overflow: hidden;
 }
 .team-info img{
 	width:100%;
@@ -1159,7 +1159,7 @@ h5.small-title {
 }
 .address-row p a:hover{
     color: #56d25b;
-} 
+}
 .address-right {
     padding: 0 .5em;
 }
@@ -1452,7 +1452,7 @@ h5.small-title {
 	bottom: 24px;
 	right: 1%;
 	overflow: hidden;
-	z-index: 999; 
+	z-index: 999;
     width: 64px;
     height: 64px;
 	border: none;
@@ -1505,7 +1505,7 @@ h5.small-title {
     }
     .video-w3l h5 {
         width: 80%;
-    }    
+    }
     .contact_grids_info {
         width: 46%;
     }
@@ -1811,7 +1811,7 @@ h5.small-title {
     }
     .video-w3l h5 {
         font-size: 35px;
-    }    
+    }
     .video-w3l {
         min-height: 340px;
     }
@@ -1853,7 +1853,7 @@ h5.small-title {
     }
     .w3ls-social-icons-2 h3 {
         font-size: 30px;
-    }    
+    }
     .agileinfo-newsletter {
         padding-left: 1.5em;
     }
@@ -2199,7 +2199,7 @@ h5.small-title {
     }
     .contact-right span, .contact-right a {
         font-size: 14px;
-    }    
+    }
     .w3ls-social-icons-2 {
         width: 90%;
     }
@@ -2249,7 +2249,7 @@ h5.small-title {
     }
     .video-w3l h5 {
         font-size: 25px;
-    }    
+    }
     .what-grid1 p, .what-grid p {
         padding-top: 3px;
     }
@@ -2291,7 +2291,7 @@ h5.small-title {
     }
     .contact-right p {
         font-size: 16px;
-    }    
+    }
     .contact-right span, .contact-right a {
         font-size: 12px;
     }
@@ -2618,7 +2618,7 @@ h5.small-title {
     float: right;
     margin-right: 10px;
 }
-    
+
 .dropdown-submenu {
   position: relative;
 }
@@ -2630,11 +2630,11 @@ h5.small-title {
 }
 
 .dropdown-toggle{
-    background-color: #56d25b; 
+    background-color: #56d25b;
     color: #fff;
 }
 
-.btn-primary.active, 
+.btn-primary.active,
 .btn-primary:active, .dropdown-toggle, .dropdown-toggle:link, .dropdown-toggle:active, .dropdown-toggle:visited, .dropdown-toggle:focus{
     background-color: #56d25b;
     border-color:  #fff;
@@ -2780,6 +2780,16 @@ input[type=submit] {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+textarea {
+	width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box
 }
 
 input[type=submit]:hover {

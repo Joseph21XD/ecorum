@@ -16,17 +16,17 @@
 			document.updform.newpass.disabled = !document.updform.newpass.disabled
 			document.updform.newpass2.disabled = !document.updform.newpass2.disabled
 
-		} 
+		}
 
 		$(document).ready(function(){
-		    $("#optradion").on( "click", function() {	 
+		    $("#optradion").on( "click", function() {
 		        $('#pass-panel').hide();
 		        $('#name-panel').show();
 		         });
 	    });
 
 	    $(document).ready(function(){
-		    $("#optradiop").on( "click", function() {	 
+		    $("#optradiop").on( "click", function() {
 		        $('#pass-panel').show();
 		        $('#name-panel').hide();
 		         });
@@ -79,7 +79,7 @@
 
 				return datos;
 			}
-			
+
 		}
 
 		function validarDelete(){
@@ -295,5 +295,5 @@
 		"</div><div style='width: 40%;' class='what-right'><a id='user-"+datos.usuarios[i].id+"' onclick='borrarUsuario("+datos.usuarios[i].id+")'>"+
 		"<i style='background-color: #ff4f81' class='fas fa-trash-alt' aria-hidden='true'></i></a></div><div style='width: 50%;' class='what-right'>"+
 		"<h4>"+datos.usuarios[i].nombre+"</h4><p>"+datos.usuarios[i].correo+"</p></div><div class='clearfix'></div></div>";
-			}	
+			}
 		}
